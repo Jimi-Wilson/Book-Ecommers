@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/Inventory/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>{{totalBooks}} Total Books</h1>
+<h1>{{borrowedBooks}} Borrowed Books</h1>
+<h1>{{totalCustomers}} Total Customers</h1>
+<a href="{% url 'sRegister' %}">Staff Register</a>
+<a href="{% url 'addBook' %}">Add A Book</a>
+{% endblock %}
