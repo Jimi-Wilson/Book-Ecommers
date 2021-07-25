@@ -8,7 +8,7 @@ class Book(models.Model):
     description = models.CharField(max_length=400)
     barcode = models.CharField(max_length=13)
     price = models.FloatField(null=True)
-    borrowed = models.BooleanField(default=False, null=True)
+    borrowed = models.BooleanField(default=False)
     coverImage = models.ImageField(upload_to='bookCovers')
 
     def __str__(self):

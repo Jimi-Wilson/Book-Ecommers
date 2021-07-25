@@ -11,27 +11,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea57ace8-e9f2-4fcd-9478-a545b2f62ef2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Inventory/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory/migrations/0002_auto_20210721_2212.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory/migrations/0003_alter_book_borrowed.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory/templates/addBook.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Inventory/templates/invalidCredentials.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/bookCovers/tess-cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory/decorators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory/migrations/0004_auto_20210724_1049.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory/migrations/0005_auto_20210724_1059.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Inventory/templates/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/migrations/0002_user_full_name.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/migrations/0003_auto_20210725_1548.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/bookCovers/Capture_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/bookCovers/Glory4lyfeWoods_map_v4_marked.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/templates/inventoryHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Inventory/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory/templates/addBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/templates/addBook.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Library/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Library/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/migrations/0002_user_full_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/migrations/0003_alter_user_managers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/migrations/0004_auto_20210721_1812.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/migrations/0005_alter_user_options.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/migrations/0006_alter_user_options.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
@@ -65,8 +63,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Inventory" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\itsem\Desktop\Programming\Demo-A-Level-NEA\Inventory" />
+      <recent name="C:\Users\itsem\Desktop\Programming\Demo-A-Level-NEA\Inventory\templates" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\itsem\Desktop\Programming\Demo-A-Level-NEA\Inventory" />
       <recent name="C:\Users\itsem\Desktop\Programming\Demo-A-Level-NEA\accounts\templates" />
@@ -75,7 +78,7 @@
       <recent name="C:\Users\itsem\Desktop\Programming\Demo-A-Level-NEA" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Run Server">
+  <component name="RunManager" selected="Python.Migrate">
     <configuration name="Make Migrations" type="PythonConfigurationType" factoryName="Python" singleton="false">
       <module name="Demo-A-Level-NEA" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -139,11 +142,38 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="models" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Demo-A-Level-NEA" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Inventory" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\itsem\Desktop\Programming\Demo-A-Level-NEA\Inventory\models.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.Run Server" />
       <item itemvalue="Python.Make Migrations" />
       <item itemvalue="Python.Migrate" />
+      <item itemvalue="Python.models" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.models" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -186,10 +216,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" width="1092" height="762" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1626886188869" />
-    <state x="719" y="318" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1626815200917">
+    <state x="719" y="318" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1627223641799">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="719" y="318" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1626815200917" />
+    <state x="719" y="318" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627223641799" />
     <state x="740" y="261" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1626886182324">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -198,34 +228,54 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="287" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1626886172006" />
-    <state width="1877" height="275" key="GridCell.Tab.0.bottom" timestamp="1626906621485">
+    <state width="1877" height="275" key="GridCell.Tab.0.bottom" timestamp="1627224753817">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1626906621485" />
-    <state width="1877" height="275" key="GridCell.Tab.0.center" timestamp="1626906621485">
+    <state width="1877" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627224753817" />
+    <state width="1877" height="275" key="GridCell.Tab.0.center" timestamp="1627224753817">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="275" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1626906621485" />
-    <state width="1877" height="275" key="GridCell.Tab.0.left" timestamp="1626906621485">
+    <state width="1877" height="275" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627224753817" />
+    <state width="1877" height="275" key="GridCell.Tab.0.left" timestamp="1627224753817">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="275" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1626906621485" />
-    <state width="1877" height="275" key="GridCell.Tab.0.right" timestamp="1626906621485">
+    <state width="1877" height="275" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627224753817" />
+    <state width="1877" height="275" key="GridCell.Tab.0.right" timestamp="1627224753817">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="275" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1626906621485" />
+    <state width="1877" height="275" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627224753817" />
+    <state width="1877" height="340" key="GridCell.Tab.1.bottom" timestamp="1627121398229">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="340" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627121398229" />
+    <state width="1877" height="340" key="GridCell.Tab.1.center" timestamp="1627121398229">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="340" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627121398229" />
+    <state width="1877" height="340" key="GridCell.Tab.1.left" timestamp="1627121398229">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="340" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627121398229" />
+    <state width="1877" height="340" key="GridCell.Tab.1.right" timestamp="1627121398229">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="340" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627121398229" />
     <state x="721" y="157" key="RollbackChangesDialog" timestamp="1626880897096">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="721" y="157" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1626880897096" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1627224263804">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627224263804" />
     <state x="1920" y="0" width="1667" height="719" key="dock-window-1" timestamp="1626903509258">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1920" y="0" width="1667" height="719" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1626903509258" />
-    <state x="1920" y="132" width="1667" height="719" key="dock-window-2" timestamp="1626906149586">
+    <state x="1920" y="132" width="1667" height="719" key="dock-window-2" timestamp="1627119759936">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="1920" y="132" width="1667" height="719" key="dock-window-2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1626906149586" />
+    <state x="1920" y="132" width="1667" height="719" key="dock-window-2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627119759936" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1626905066885">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

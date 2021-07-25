@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import RegistrationForm
 
-
 def register(request):
     context = {}
     if request.POST:
