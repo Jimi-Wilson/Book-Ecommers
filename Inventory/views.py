@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .decorators import isStaff
-
+from .decorators import is_staff
 
 from .forms import *
 from Inventory.models import Book
@@ -9,7 +8,7 @@ from accounts.models import User
 
 
 @login_required
-@isStaff
+@is_staff
 def home(request):
     context = {}
     books = Book.objects.all()
@@ -27,8 +26,8 @@ def home(request):
 
 
 @login_required
-@isStaff
-def staffRegister(request):
+@is_staff
+def staff_register(request):
     context = {}
     if request.POST:
         form = RegistrationForm(request.POST)
@@ -44,16 +43,32 @@ def staffRegister(request):
 
 
 @login_required
-@isStaff
-def addBook(request):
+@is_staff
+def add_book(request):
     if request.method == 'POST':
-        form = addBookForm(request.POST, request.FILES)
+        form = AddBookForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
             return redirect('home')
 
-    form = addBookForm()
+    form = AddBookForm()
 
-    context = {'form' : form}
+    context = {'form': form}
     return render(request, 'addBook.html', context)
+
+
+@login_required
+@is_staff
+def view_books(request):
+    books = Book.objects.all()
+    context = {'books': books}
+    return render(request, 'viewBooks.html', context)
+
+
+@login_required
+@is_staff
+def update_book(request, id):
+    books = Book.objects.all()
+    context = {'books': books}
+    return render(request, 'viewBooks.html', context)

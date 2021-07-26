@@ -10,7 +10,7 @@ class RegistrationForm(UserCreationForm):
         fields = ('email', 'password1', 'password2', 'staff')
 
 
-class addBookForm(forms.ModelForm):
+class AddBookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = ('title',
