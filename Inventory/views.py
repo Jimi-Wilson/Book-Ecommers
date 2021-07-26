@@ -22,7 +22,7 @@ def home(request):
     totalCustomers = customers.count()
     context['totalCustomers'] = totalCustomers
 
-    return render(request, "inventoryHome.html", context)
+    return render(request, "inventory/home.html", context)
 
 
 @login_required
@@ -55,7 +55,7 @@ def add_book(request):
     form = AddBookForm()
 
     context = {'form': form}
-    return render(request, 'addBook.html', context)
+    return render(request, 'inventory/addBook.html', context)
 
 
 @login_required
@@ -63,12 +63,26 @@ def add_book(request):
 def view_books(request):
     books = Book.objects.all()
     context = {'books': books}
-    return render(request, 'viewBooks.html', context)
+    return render(request, 'inventory/viewBooks.html', context)
 
 
 @login_required
 @is_staff
 def update_book(request, id):
-    books = Book.objects.all()
-    context = {'books': books}
-    return render(request, 'viewBooks.html', context)
+    book = Book.objects.get(id=id)
+    form = AddBookForm(instance=book)
+    if request.method == 'POST':
+        form = AddBookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect('viewBooks')
+
+    context = {'form': form}
+    return render(request, 'inventory/updateBook.html', context)
+
+@login_required
+@is_staff
+def delete_book(request, id):
+    book = Book.objects.get(id=id)
+    book.delete()
+    return redirect('viewBooks')
