@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/Inventory/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/inventory/home.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -11,4 +11,5 @@
 <a href="{% url 'sRegister' %}">Staff Register</a>
 <a href="{% url 'addBook' %}">Add A Book</a>
 <a href="{% url 'viewBooks' %}">View Books</a>
+<a href="{% url 'searchBooks' %}">Search Books</a>
 {% endblock %}

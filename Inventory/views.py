@@ -80,9 +80,43 @@ def update_book(request, id):
     context = {'form': form}
     return render(request, 'inventory/updateBook.html', context)
 
+
 @login_required
 @is_staff
 def delete_book(request, id):
     book = Book.objects.get(id=id)
     book.delete()
     return redirect('viewBooks')
+
+
+def search_book(request):
+    filters = {}
+    context = {}
+    form = SearchBookForm()
+    if request.method == 'POST':
+        form = SearchBookForm(request.POST)
+        if form.is_valid():
+            books = Book.objects.all()
+
+            title = form['title'].value()
+            if title:
+                filters['title'] = title
+
+            author = form['author'].value()
+            if author:
+                filters['author'] = author
+
+            barcode = form['barcode'].value()
+            if barcode:
+                filters['barcode'] = barcode
+
+            selected_books = books.filter(**filters)
+            if not selected_books:
+                context['error'] = 'No Books Found'
+
+            context['selected_books'] = selected_books
+            context['form'] = form
+            return render(request, 'inventory/searchForm.html', context)
+
+    context['form'] = form
+    return render(request, 'inventory/searchForm.html', context)

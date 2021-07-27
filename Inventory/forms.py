@@ -20,3 +20,9 @@ class AddBookForm(forms.ModelForm):
                   'price',
                   'borrowed',
                   'coverImage')
+
+
+class SearchBookForm(forms.Form):
+    title = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder':'Title'}), label='')
+    author = forms.CharField(max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder':'Author'}), label='')
+    barcode = forms.CharField(max_length=13, required=False, widget=forms.TextInput(attrs={'placeholder':'Barcode'}), label='')
