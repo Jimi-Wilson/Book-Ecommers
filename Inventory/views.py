@@ -9,7 +9,7 @@ from accounts.models import User
 
 @login_required
 @is_staff
-def home(request):
+def home(request, *args, **kwargs):
     context = {}
     books = Book.objects.all()
     customers = User.objects.all()
@@ -27,30 +27,30 @@ def home(request):
 
 @login_required
 @is_staff
-def staff_register(request):
+def staff_register(request, *args, **kwargs):
     context = {}
     if request.POST:
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('sHome')
         else:
             context['registration_form'] = form
     else:
         form = RegistrationForm()
         context['registration_form'] = form
-    return render(request, 'register.html', context)
+    return render(request, 'inventory\staffRegister.html', context)
 
 
 @login_required
 @is_staff
-def add_book(request):
+def add_book(request, *args, **kwargs):
     if request.method == 'POST':
         form = AddBookForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('sHome')
 
     form = AddBookForm()
 
@@ -60,15 +60,7 @@ def add_book(request):
 
 @login_required
 @is_staff
-def view_books(request):
-    books = Book.objects.all()
-    context = {'books': books}
-    return render(request, 'inventory/viewBooks.html', context)
-
-
-@login_required
-@is_staff
-def update_book(request, id):
+def update_book(request, id, *args, **kwargs):
     book = Book.objects.get(id=id)
     form = AddBookForm(instance=book)
     if request.method == 'POST':
@@ -83,21 +75,23 @@ def update_book(request, id):
 
 @login_required
 @is_staff
-def delete_book(request, id):
+def delete_book(request, id, *args, **kwargs):
     book = Book.objects.get(id=id)
     book.delete()
     return redirect('viewBooks')
 
 
-def search_book(request):
+@login_required
+@is_staff
+def view_books(request, *args, **kwargs):
     filters = {}
     context = {}
+    books = Book.objects.all()
     form = SearchBookForm()
+
     if request.method == 'POST':
         form = SearchBookForm(request.POST)
         if form.is_valid():
-            books = Book.objects.all()
-
             title = form['title'].value()
             if title:
                 filters['title'] = title
@@ -110,13 +104,66 @@ def search_book(request):
             if barcode:
                 filters['barcode'] = barcode
 
+            tags = form['tags'].value()
+            if tags:
+                selected_books = books.filter(tags__in=tags)
+                selected_books = selected_books.filter(**filters)
+                context['books'] = selected_books
+                context['form'] = form
+                return render(request, 'inventory/viewBooks.html', context)
+
             selected_books = books.filter(**filters)
             if not selected_books:
                 context['error'] = 'No Books Found'
 
-            context['selected_books'] = selected_books
+            context['books'] = selected_books
             context['form'] = form
-            return render(request, 'inventory/searchForm.html', context)
+            return render(request, 'inventory/viewBooks.html', context)
 
+    context['books'] = books
     context['form'] = form
-    return render(request, 'inventory/searchForm.html', context)
+    return render(request, 'inventory/viewBooks.html', context)
+
+
+@login_required
+@is_staff
+def add_tag(request, *args, **kwargs):
+    context = {}
+    form = AddTagForm()
+    if request.method == 'POST':
+        form = AddTagForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('sHome')
+    context['form'] = form
+    return render(request, 'inventory/addTagForm.html', context)
+
+
+def view_tags(request, *args, **kwargs):
+    context = {}
+    tags = Tag.objects.all()
+    context['tags'] = tags
+    return render(request, 'inventory/viewTags.html', context)
+
+
+@login_required
+@is_staff
+def update_tag(request, id, *args, **kwargs):
+    tag = Tag.objects.get(id=id)
+    form = AddTagForm(instance=tag)
+    if request.method == 'POST':
+        form = AddTagForm(request.POST, instance=tag)
+        if form.is_valid():
+            form.save()
+            return redirect('viewBooks')
+
+    context = {'form': form}
+    return render(request, 'inventory/updateBook.html', context)
+
+
+@login_required
+@is_staff
+def delete_tag(request, id, *args, **kwargs):
+    tag = Tag.objects.get(id=id)
+    tag.delete()
+    return redirect('viewTags')

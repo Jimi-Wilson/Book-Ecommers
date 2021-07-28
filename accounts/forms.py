@@ -4,7 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import User
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(max_length=50, help_text='Required. Add a valid email Address')
+    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Type Your Email Address'}))
+    firstName = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Type Your First Name'}), label="First Name:")
+    lastName = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Type Your Last Name'}), label="Last Name:")
 
     class Meta:
         model = User

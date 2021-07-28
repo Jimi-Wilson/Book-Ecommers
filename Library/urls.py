@@ -20,8 +20,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('Inventory.urls')),
+    path('staff/', include('Inventory.urls')),
     path('account', include('accounts.urls')),
     path('', include("django.contrib.auth.urls")),
+    path('', include('LibraryApp.urls'))
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

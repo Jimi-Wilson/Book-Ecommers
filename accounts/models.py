@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None,firstName=None ,lastName=None,  is_active=True, is_staff=False, is_admin=False):
+    def create_user(self, email, password=None,firstName=None ,lastName=None, is_staff=False, is_admin=False):
         if not email:
             raise ValueError("Users must have an email address")
         if not password:
@@ -15,7 +15,6 @@ class UserManager(BaseUserManager):
         user_obj.set_password(password)  # change user password
         user_obj.staff = is_staff
         user_obj.admin = is_admin
-        user_obj.active = is_active
         user_obj.firstName = firstName
         user_obj.lastName = firstName
         user_obj.save(using=self._db)
@@ -34,7 +33,7 @@ class UserManager(BaseUserManager):
             email,
             password=password,
             is_staff=True,
-            is_admin=True
+            is_admin=True,
         )
         return user
 
@@ -43,7 +42,6 @@ class User(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
     firstName = models.CharField(max_length=255, blank=True, null=True)
     lastName = models.CharField(max_length=255, blank=True, null=True)
-    active = models.BooleanField(default=True)  # can login
     staff = models.BooleanField(default=False)  # staff user non superuser
     admin = models.BooleanField(default=False)  # superuser
 
@@ -75,7 +73,4 @@ class User(AbstractBaseUser):
     def is_admin(self):
         return self.admin
 
-    @property
-    def is_active(self):
-        return self.active
 

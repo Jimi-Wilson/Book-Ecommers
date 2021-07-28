@@ -20,3 +20,6 @@ def register(request):
          context['registration_form'] = form
     return render(request, 'register.html', context)
 
+
+def profile(request):
+    pass

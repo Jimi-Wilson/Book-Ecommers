@@ -1,0 +1,24 @@
+{% extends "Sbase.html" %}
+{% block head %}
+{% load static %}
+<title>Search For A Book</title>
+<link rel="stylesheet" href="{% static "css/inventory/viewBooks.css" %}">
+{% endblock %}
+{% block content %}
+
+<div class="table">
+  <table>
+    <th>Tag Name</th>
+    <th>Update</th>
+    <th>Delete</th>
+
+    {% for i in tags %}
+    <tr>
+      <td><a class="books-link" href="#">{{i.name}}</a></td>
+      <td><a class="books-link" href="{% url 'updateTag' id=i.id %}">Update</a></td>
+      <td><a class="books-link" href="{% url 'deleteTag' id=i.id %}" onclick="return confirm('Are you sure you want to delete this?')">Delete </a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}
