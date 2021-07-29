@@ -5,8 +5,8 @@ from .models import User
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Type Your Email Address'}))
-    firstName = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Type Your First Name'}), label="First Name:")
-    lastName = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Type Your Last Name'}), label="Last Name:")
+    firstName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Type Your First Name'}), label="First Name:")
+    lastName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Type Your Last Name'}), label="Last Name:")
 
     class Meta:
         model = User

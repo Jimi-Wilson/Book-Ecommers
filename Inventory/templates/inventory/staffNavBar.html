@@ -19,10 +19,21 @@
         <a href="{% url 'addTag' %}">Add A Tag</a>
       </div>
     </div>
-    <a class="float-r" href="#news">Hello, {{user.firstName}}</a>
-    <a class="float-r" href="{% url 'home' %}">Leave Staff Portal</a>
-    <a class="float-r" href="{% url 'sRegister' %}">Staff Register</a>
-  </div>
+
+    <div id="left" class="dropdown">
+      <button class="dropbtn">Hello, {{user.firstName}}
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Account Settings</a>
+        <a href="{% url 'logout' %}">Logout</a>
+      </div>
+    </div>
+
+
+  </div> <a class="float-r" href="{% url 'home' %}">Leave Staff Portal</a>
+  <a class="float-r" href="#news">Staff Register</a>
+</div>
 </div>
 
 
