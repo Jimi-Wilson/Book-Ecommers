@@ -1,106 +1,92 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
 from .decorators import is_staff
+from django.shortcuts import get_object_or_404, render, redirect
+
+from django.views import View
+from django.views.generic import *
+from django.urls import reverse_lazy
 
 from .forms import *
 from Inventory.models import Book
 from accounts.models import User
 
-
-@login_required
-@is_staff
-def home(request, *args, **kwargs):
-    context = {}
-    books = Book.objects.all()
-    customers = User.objects.all()
-    customers = customers.filter(admin=False, staff=False)
-
-    totalBooks = books.count()
-    context['totalBooks'] = totalBooks
-    borrowedBooks = books.filter(borrowed=True).count()
-    context['borrowedBooks'] = borrowedBooks
-    totalCustomers = customers.count()
-    context['totalCustomers'] = totalCustomers
-
-    return render(request, "inventory/home.html", context)
+decorators = [login_required, is_staff]
 
 
-@login_required
-@is_staff
-def staff_register(request, *args, **kwargs):
-    context = {}
-    if request.POST:
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('sHome')
-        else:
-            context['registration_form'] = form
-    else:
-        form = RegistrationForm()
-        context['registration_form'] = form
-    return render(request, 'inventory\staffRegister.html', context)
+@method_decorator(decorators, name='dispatch')
+class HomeView(View):
+    def get(self, request, *args, **kwargs):
+        context = {}
+        total_books = Book.objects.all().count()
+        total_customers = User.objects.all().filter(admin=False,
+                                                    staff=False).count()
+
+        context['totalBooks'] = total_books
+        context['totalCustomers'] = total_customers
+        return render(request, 'inventory/home.html', context)
 
 
-@login_required
-@is_staff
-def add_book(request, *args, **kwargs):
-    if request.method == 'POST':
-        form = AddBookForm(request.POST, request.FILES)
-
-        if form.is_valid():
-            form.save()
-            return redirect('sHome')
-
-    form = AddBookForm()
-
-    context = {'form': form}
-    return render(request, 'inventory/addBook.html', context)
+@method_decorator(decorators, name='dispatch')
+class StaffRegister(CreateView):
+    form_class = StaffRegistrationForm
+    success_url = reverse_lazy('sHome')
+    template_name = 'inventory/staffRegister.html'
 
 
-@login_required
-@is_staff
-def update_book(request, id, *args, **kwargs):
-    book = Book.objects.get(id=id)
-    form = AddBookForm(instance=book)
-    if request.method == 'POST':
-        form = AddBookForm(request.POST, instance=book)
-        if form.is_valid():
-            form.save()
-            return redirect('viewBooks')
-
-    context = {'form': form}
-    return render(request, 'inventory/updateBook.html', context)
+@method_decorator(decorators, name='dispatch')
+class AddBook(CreateView):
+    form_class = AddBookForm
+    success_url = reverse_lazy('viewBooks')
+    template_name = 'inventory/addBook.html'
 
 
-@login_required
-@is_staff
-def delete_book(request, id, *args, **kwargs):
-    book = Book.objects.get(id=id)
-    book.delete()
-    return redirect('viewBooks')
+@method_decorator(decorators, name='dispatch')
+class UpdateBook(UpdateView):
+    form_class = AddBookForm
+    success_url = reverse_lazy('viewBooks')
+    queryset = Book.objects.all()
+    template_name = 'inventory/updateBook.html'
+
+    def get_object(self):
+        id = self.kwargs.get('id')
+        return get_object_or_404(Book, id=id)
 
 
-@login_required
-@is_staff
-def view_books(request, *args, **kwargs):
-    filters = {}
-    context = {}
-    books = Book.objects.all()
-    form = SearchBookForm()
+@method_decorator(decorators, name='dispatch')
+class DeleteBook(View):
+    def get(self, request, *args, **kwargs):
+        id = self.kwargs.get('id')
+        book = Book.objects.get(id=id)
+        book.delete()
+        return redirect('viewBooks')
 
-    if request.method == 'POST':
+
+@method_decorator(decorators, name='dispatch')
+class ViewBooks(View):
+    def get(self, request, *args, **kwargs):
+        context = {}
+        form = SearchBookForm()
+        books = Book.objects.all()
+        context['books'] = books
+        context['form'] = form
+        return render(request, 'inventory/viewBooks.html', context)
+
+    def post(self, request, *args, **kwargs):
+        filters = {}
+        context = {}
+        books = Book.objects.all()
         form = SearchBookForm(request.POST)
         if form.is_valid():
-            title = form['title'].value()
+            title = form['title'].value().strip()
             if title:
                 filters['title'] = title
 
-            author = form['author'].value()
+            author = form['author'].value().strip()
             if author:
                 filters['author'] = author
 
-            barcode = form['barcode'].value()
+            barcode = form['barcode'].value().strip()
             if barcode:
                 filters['barcode'] = barcode
 
@@ -120,50 +106,41 @@ def view_books(request, *args, **kwargs):
             context['form'] = form
             return render(request, 'inventory/viewBooks.html', context)
 
-    context['books'] = books
-    context['form'] = form
-    return render(request, 'inventory/viewBooks.html', context)
+
+@method_decorator(decorators, name='dispatch')
+class ViewTags(TemplateView):
+    template_name = 'inventory/viewTags.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tags = Tag.objects.all()
+        context['tags'] = tags
+        return context
 
 
-@login_required
-@is_staff
-def add_tag(request, *args, **kwargs):
-    context = {}
-    form = AddTagForm()
-    if request.method == 'POST':
-        form = AddTagForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('sHome')
-    context['form'] = form
-    return render(request, 'inventory/addTagForm.html', context)
+@method_decorator(decorators, name='dispatch')
+class AddTag(CreateView):
+    form_class = AddTagForm
+    success_url = reverse_lazy('viewTags')
+    template_name = 'inventory/addTagForm.html'
 
 
-def view_tags(request, *args, **kwargs):
-    context = {}
-    tags = Tag.objects.all()
-    context['tags'] = tags
-    return render(request, 'inventory/viewTags.html', context)
+@method_decorator(decorators, name='dispatch')
+class UpdateTag(UpdateView):
+    form_class = AddTagForm
+    success_url = reverse_lazy('viewTags')
+    template_name = 'inventory/updateBook.html'
+    queryset = Tag.objects.all()
+
+    def get_object(self):
+        id = self.kwargs.get('id')
+        return get_object_or_404(Tag, id=id)
 
 
-@login_required
-@is_staff
-def update_tag(request, id, *args, **kwargs):
-    tag = Tag.objects.get(id=id)
-    form = AddTagForm(instance=tag)
-    if request.method == 'POST':
-        form = AddTagForm(request.POST, instance=tag)
-        if form.is_valid():
-            form.save()
-            return redirect('viewBooks')
-
-    context = {'form': form}
-    return render(request, 'inventory/updateBook.html', context)
-
-
-@login_required
-@is_staff
-def delete_tag(request, id, *args, **kwargs):
-    tag = Tag.objects.get(id=id)
-    tag.delete()
-    return redirect('viewTags')
+@method_decorator(decorators, name='dispatch')
+class DeleteTag(View):
+    def get(self, request, *args, **kwargs):
+        id = self.kwargs.get('id')
+        tag = Tag.objects.get(id=id)
+        tag.delete()
+        return redirect('viewTags')
