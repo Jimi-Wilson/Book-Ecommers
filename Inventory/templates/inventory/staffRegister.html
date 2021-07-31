@@ -1,14 +1,17 @@
 {% extends 'sBase.html' %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static '/css/accounts/register.css' %}">
+<link rel="stylesheet" href="{% static '/css/inventory/staffRegister.css' %}">
 {% endblock %}
 
 {% block content %}
-<h1>Register</h1>
-<form method='POST'>
-  {% csrf_token %}
-  {{form.as_p}}
-  <button type="submit">Register</button>
-</form>
+<div class="form-content">
+  <h1>Register</h1>
+  <form method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Register</button>
+  </form>
+</div>
+
 {% endblock %}

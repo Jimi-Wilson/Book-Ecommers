@@ -1,4 +1,18 @@
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas:
+    "navbar"
+    "form"
+    "results"
+}
+
+.navbar {
+  grid-area: navbar;
+}
+
 .search-form {
+  grid-area: form;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +25,7 @@ input {
 }
 
 .results-table {
+  grid-area: results;
   display: flex;
   justify-content: center;
 }

@@ -3,7 +3,6 @@ from django.utils.decorators import method_decorator
 from .decorators import is_staff
 from django.shortcuts import get_object_or_404, render, redirect
 
-from django.views import View
 from django.views.generic import *
 from django.urls import reverse_lazy
 

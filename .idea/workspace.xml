@@ -9,14 +9,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea57ace8-e9f2-4fcd-9478-a545b2f62ef2" name="Default Changelist" comment="stable">
-      <change beforePath="$PROJECT_DIR$/.idea/Demo-A-Level-NEA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Demo-A-Level-NEA.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/accounts/templates/accounts/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/Inventory/addBook.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/Inventory/addTag.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/Inventory/staffRegister.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/Inventory/updateBook.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/Inventory/viewTags.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory/templates/inventory/addBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/templates/inventory/addBook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory/templates/inventory/addTagForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/templates/inventory/addTagForm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Inventory/templates/inventory/staffNavBar.html" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/templates/inventory/staffNavBar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory/templates/inventory/staffRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/templates/inventory/staffRegister.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory/templates/inventory/updateBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/templates/inventory/updateBook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Inventory/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Inventory/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Library/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryApp/templates/library/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryApp/templates/library/navbar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/Inventory/viewBooks.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/Inventory/viewBooks.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,26 +282,26 @@
     <option name="LAST_COMMIT_MESSAGE" value="Search System Added" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="703" y="318" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1627503123972">
+    <state x="703" y="318" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1627740117918">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="703" y="318" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627503123972" />
-    <state width="1877" height="383" key="GridCell.Tab.0.bottom" timestamp="1627532554602">
+    <state x="703" y="318" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627740117918" />
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom" timestamp="1627756150775">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="383" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627532554602" />
-    <state width="1877" height="383" key="GridCell.Tab.0.center" timestamp="1627532554602">
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627756150775" />
+    <state width="1877" height="227" key="GridCell.Tab.0.center" timestamp="1627756150775">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="383" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627532554602" />
-    <state width="1877" height="383" key="GridCell.Tab.0.left" timestamp="1627532554602">
+    <state width="1877" height="227" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627756150775" />
+    <state width="1877" height="227" key="GridCell.Tab.0.left" timestamp="1627756150775">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="383" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627532554602" />
-    <state width="1877" height="383" key="GridCell.Tab.0.right" timestamp="1627532554602">
+    <state width="1877" height="227" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627756150775" />
+    <state width="1877" height="227" key="GridCell.Tab.0.right" timestamp="1627756150775">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="383" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627532554602" />
+    <state width="1877" height="227" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627756150775" />
     <state width="1877" height="340" key="GridCell.Tab.1.bottom" timestamp="1627505603708">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

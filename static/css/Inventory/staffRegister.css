@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "navbar"
+    "form"
+}
+
+.navbar {
+  grid-area: navbar;
+}
+
+.form-content {
+  grid-area: form;
+}

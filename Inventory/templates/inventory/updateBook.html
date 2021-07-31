@@ -1,12 +1,18 @@
 {% extends 'Sbase.html' %}
+{% load static %}
 {% block head %}
+<link rel="stylesheet" href="{% static 'css/inventory/updateBook.css' %}">
 <title>Update Book</title>
 {% endblock %}
 {% block content %}
-<form method="POST">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Update Book</button>
-</form>
+<div class="form-content">
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Book</button>
+  </form>
+</div>
+
+
 
 {% endblock %}
