@@ -1,4 +1,7 @@
+from typing_extensions import ParamSpecArgs
 from django.db import models
+from django.db.models.base import Model
+from accounts.models import User
 
 
 class Tag(models.Model):
@@ -6,7 +9,6 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class Book(models.Model):
@@ -22,5 +24,3 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
-
-

@@ -27,21 +27,21 @@ class HomeView(View):
 
 
 @method_decorator(decorators, name='dispatch')
-class StaffRegister(CreateView):
+class StaffRegisterView(CreateView):
     form_class = StaffRegistrationForm
     success_url = reverse_lazy('sHome')
     template_name = 'inventory/staffRegister.html'
 
 
 @method_decorator(decorators, name='dispatch')
-class AddBook(CreateView):
+class AddBookView(CreateView):
     form_class = AddBookForm
     success_url = reverse_lazy('viewBooks')
     template_name = 'inventory/addBook.html'
 
 
 @method_decorator(decorators, name='dispatch')
-class UpdateBook(UpdateView):
+class UpdateBookView(UpdateView):
     form_class = AddBookForm
     success_url = reverse_lazy('viewBooks')
     queryset = Book.objects.all()
@@ -53,7 +53,7 @@ class UpdateBook(UpdateView):
 
 
 @method_decorator(decorators, name='dispatch')
-class DeleteBook(View):
+class DeleteBookView(View):
     def get(self, request, *args, **kwargs):
         id = self.kwargs.get('id')
         book = Book.objects.get(id=id)
@@ -62,14 +62,16 @@ class DeleteBook(View):
 
 
 @method_decorator(decorators, name='dispatch')
-class ViewBooks(View):
+class BooksView(View):
+    template_name = 'inventory/viewBooks.html'
+
     def get(self, request, *args, **kwargs):
         context = {}
         form = SearchBookForm()
         books = Book.objects.all()
         context['books'] = books
         context['form'] = form
-        return render(request, 'inventory/viewBooks.html', context)
+        return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
         filters = {}
@@ -95,7 +97,7 @@ class ViewBooks(View):
                 selected_books = selected_books.filter(**filters)
                 context['books'] = selected_books
                 context['form'] = form
-                return render(request, 'inventory/viewBooks.html', context)
+                return render(request, self.template_name, context)
 
             selected_books = books.filter(**filters)
             if not selected_books:
@@ -103,11 +105,11 @@ class ViewBooks(View):
 
             context['books'] = selected_books
             context['form'] = form
-            return render(request, 'inventory/viewBooks.html', context)
+            return render(request, self.template_name, context)
 
 
 @method_decorator(decorators, name='dispatch')
-class ViewTags(TemplateView):
+class TagsView(TemplateView):
     template_name = 'inventory/viewTags.html'
 
     def get_context_data(self, **kwargs):
@@ -118,14 +120,14 @@ class ViewTags(TemplateView):
 
 
 @method_decorator(decorators, name='dispatch')
-class AddTag(CreateView):
+class AddTagView(CreateView):
     form_class = AddTagForm
     success_url = reverse_lazy('viewTags')
     template_name = 'inventory/addTagForm.html'
 
 
 @method_decorator(decorators, name='dispatch')
-class UpdateTag(UpdateView):
+class UpdateTagView(UpdateView):
     form_class = AddTagForm
     success_url = reverse_lazy('viewTags')
     template_name = 'inventory/updateBook.html'
@@ -137,7 +139,7 @@ class UpdateTag(UpdateView):
 
 
 @method_decorator(decorators, name='dispatch')
-class DeleteTag(View):
+class DeleteTagView(View):
     def get(self, request, *args, **kwargs):
         id = self.kwargs.get('id')
         tag = Tag.objects.get(id=id)

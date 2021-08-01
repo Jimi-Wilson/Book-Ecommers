@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/library/books.css' %}">
+<title>Books</title>
+{% endblock %}
+{% block content %}
+    <div class="books-content">
+        {% for i in books %}
+        <div class="book">
+            <h2>{{i.title}}</h2>
+            <h3>{{i.author}}</h3>
+            
+            {% if i.discount_price %}
+            <s>{{i.price}}</s>
+            <p>£{{i.price}}</p>
+            {% else %}
+            <p>£{{i.price}}</p>            
+            {% endif %}
+            
+            <a href="{% url 'book' id=i.id %}"><img src="{{i.coverImage.url}}" alt="Book Cover of {{i.title}}"></a>
+        </div>
+        {% endfor %}    
+    </div>
+
+
+{% endblock %}
+
+

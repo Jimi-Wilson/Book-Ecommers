@@ -28,7 +28,7 @@
 
     {% for i in books %}
     <tr>
-      <td><a class="books-link" href="#">{{i.title}}</a></td>
+      <td><a class="books-link" href="{% url 'book' id=i.id %}">{{i.title}}</a></td>
       <td><a class="books-link" href="#">{{i.author}}</a></td>
       <td><a class="books-link" href="#">{{i.barcode}}</a></td>
       <td><a class="books-link" href="{% url 'updateBook' id=i.id %}">Update</a></td>
