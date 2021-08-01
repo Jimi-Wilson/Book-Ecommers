@@ -13,4 +13,49 @@
 
 .books-content {
     grid-area: books;        
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: 1em;
+    margin-left: 1em;
+
+}
+.book {
+    position: relative;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+}
+
+.author-container {
+    display: flex;
+    justify-content: center;
+}
+
+.price-contatiner {
+    display: flex;
+    justify-content: center;
+}
+
+.discounted-price-contatiner {
+    display: flex;
+    justify-content: center;
+}
+
+.text-link:visited {
+    text-decoration: none;
+}
+
+.text-link {
+    text-decoration: none;
+    color: black;
+    padding-top: .5em;
+    max-width: 25ch;
 }

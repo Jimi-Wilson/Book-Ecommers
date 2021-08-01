@@ -8,17 +8,19 @@
     <div class="books-content">
         {% for i in books %}
         <div class="book">
-            <h2>{{i.title}}</h2>
-            <h3>{{i.author}}</h3>
+            <div class="image-container">
+                <a href="{% url 'book' id=i.id %}"><img src="{{i.coverImage.url}}" alt="Book Cover of {{i.title}}"></a>
+            </div>
+            <div class="title-container"><a class="text-link" href="{% url 'book' id=i.id %}">{{i.title}}</a></div> 
+            <div class="author-container"><a class="text-link" href="">{{i.author}}</a></div>
+                {% if i.discount_price %}
+                <div class="price-contatiner"><s>{{i.price}}</s></div>
+                <div class="discounted-price-container"><p>£{{i.price}}</p></div>
+                {% else %}
+                <div class="price-contatiner"><p>£{{i.price}}</p></div>
             
-            {% if i.discount_price %}
-            <s>{{i.price}}</s>
-            <p>£{{i.price}}</p>
-            {% else %}
-            <p>£{{i.price}}</p>            
-            {% endif %}
-            
-            <a href="{% url 'book' id=i.id %}"><img src="{{i.coverImage.url}}" alt="Book Cover of {{i.title}}"></a>
+                {% endif %}
+      
         </div>
         {% endfor %}    
     </div>

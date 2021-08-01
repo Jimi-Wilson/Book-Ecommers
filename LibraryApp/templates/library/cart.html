@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}{% endblock head %}
+{% block content %}
+{% for i in order_items %}
+<h1>{{i.product.title}}</h1>
+<p>{{i.quantity}}</p>
+<p>{{i.get_total}}</p>
+<a href="{% url 'book' id=i.product.id %}"><img src="{{i.product.coverImage.url}}" alt=""></a>
+{% endfor %}
+
+{% endblock content %}

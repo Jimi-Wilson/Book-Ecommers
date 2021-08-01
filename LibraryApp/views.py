@@ -1,8 +1,10 @@
-from Inventory.models import Book
+from django.template.response import ContentNotRenderedError
+from Inventory.models import Book, Order, OrderItem
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView
+from django.views import View
 
 # Create your views here.
 
@@ -40,3 +42,44 @@ class BookView(TemplateView):
         context['tags'] = tags
         context['book'] = book
         return context
+
+
+class AddItemToCartView(View):
+    template_name = 'library/addItem.html'
+
+    def get(self, request, *args, **kwargs):
+        order = Order.objects.all()
+        order = Order.objects.filter(user=request.user, complete=False).first()
+        if not order:
+            order = Order(user=request.user,
+                          complete=False,
+                          trasaction_id="egjipijrgwirgjeorgeijogreoikj")
+            order.save()
+
+        book_id = self.kwargs.get('id')
+        book = Book.objects.get(id=book_id)
+        if OrderItem.objects.filter(product=book, order=order):
+
+            order_item = OrderItem.objects.filter(product=book,
+                                                  order=order).first()
+            order_item.quantity = order_item.quantity + 1
+            print(order_item.quantity)
+            order_item.save()
+            return render(request, self.template_name)
+
+        else:
+            order_items = OrderItem(product=book, order=order, quantity=+1)
+            order_items.save()
+            print(order.get_cart_total)
+            return render(request, self.template_name)
+
+
+class CartView(View):
+    template_name = 'library/cart.html'
+
+    def get(self, request, *args, **kwargs):
+        context = {}
+        order = Order.objects.filter(user=request.user, complete=False).first()
+        order_items = OrderItem.objects.filter(order=order)
+        context['order_items'] = order_items
+        return render(request, self.template_name, context)

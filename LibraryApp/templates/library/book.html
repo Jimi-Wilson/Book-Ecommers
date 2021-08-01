@@ -28,7 +28,7 @@
     <p>This book is already borrowed</p>  
     {% endif %}
 
-    <a href="">Add To Cart</a>
+    <a href="{% url 'addItem' id=book.id %}">Add To Cart</a>
     <a href="">Borrow</a>
 </div>
 
