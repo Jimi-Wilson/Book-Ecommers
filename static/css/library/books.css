@@ -1,14 +1,19 @@
 .container {
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto 1fr;
     grid-template-areas: 
     "nav"
+    "search-form"
     "books";
 }
 
 
 .navbar {
     grid-area: nav;
+}
+
+.search-form {
+    grid-area: search-form;
 }
 
 .books-content {

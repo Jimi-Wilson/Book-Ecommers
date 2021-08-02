@@ -1,3 +1,5 @@
+from django.http import request
+from django.template import response
 from django.template.response import ContentNotRenderedError
 from Inventory.models import Book, Order, OrderItem
 from django.contrib.auth.decorators import login_required
@@ -5,6 +7,7 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView
 from django.views import View
+from .forms import *
 
 # Create your views here.
 
@@ -15,16 +18,38 @@ class HomeView(TemplateView):
     template_name = 'library/home.html'
 
 
-# Gets all books and returns template and context
-class BooksView(TemplateView):
+class BooksView(View):
     template_name = 'library/books.html'
+    books = Book.objects.all()
 
-    def get_context_data(
-            self, **kwargs):  # Gets all books and passes them to context
-        context = super().get_context_data(**kwargs)
-        books = Book.objects.all()
+    def get(self, request, *args,
+            **kwargs):  # Gets all books and passes them to context
+        context = {}
+
+        context['books'] = self.books
+
+        form = SearchForm()
+        context['form'] = form
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        context = {}
+        filters = {}
+
+        form = SearchForm(request.POST)
+        context['form'] = form
+
+        search_field = form['search_field'].value().strip()
+
+        if self.books.filter(title=search_field).count() > 0:
+            filters['title'] = search_field
+
+        if self.books.filter(author=search_field).count() > 0:
+            filters['author'] = search_field
+
+        books = self.books.filter(**filters)
         context['books'] = books
-        return context
+        return render(request, self.template_name, context)
 
 
 class BookView(TemplateView):

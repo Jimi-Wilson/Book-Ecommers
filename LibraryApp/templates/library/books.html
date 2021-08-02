@@ -5,6 +5,16 @@
 <title>Books</title>
 {% endblock %}
 {% block content %}
+
+<div class="search-from">
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+
+    </form>
+</div>
+
+
     <div class="books-content">
         {% for i in books %}
         <div class="book">
