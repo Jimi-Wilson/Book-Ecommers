@@ -6,36 +6,49 @@
 {% endblock %}
 {% block content %}
 
+
 <div class="search-from">
     <form method="post">
         {% csrf_token %}
         {{form}}
-
+        <button type="submit"><img src="{% static 'img/search.png' %}" alt=""></button>
     </form>
 </div>
 
 
-    <div class="books-content">
-        {% for i in books %}
-        <div class="book">
-            <div class="image-container">
-                <a href="{% url 'book' id=i.id %}"><img src="{{i.coverImage.url}}" alt="Book Cover of {{i.title}}"></a>
-            </div>
-            <div class="title-container"><a class="text-link" href="{% url 'book' id=i.id %}">{{i.title}}</a></div> 
-            <div class="author-container"><a class="text-link" href="">{{i.author}}</a></div>
-                {% if i.discount_price %}
-                <div class="price-contatiner"><s>{{i.price}}</s></div>
-                <div class="discounted-price-container"><p>£{{i.price}}</p></div>
-                {% else %}
-                <div class="price-contatiner"><p>£{{i.price}}</p></div>
-            
-                {% endif %}
-      
-        </div>
-        {% endfor %}    
-    </div>
+{% if search_error %}
+<h1>No Results Found</h1>
+<p>There where no results matching your search : {{search_field}}</p>
+{% endif %}
 
+<div class="books-content">
+    {% for i in books %}
+    <div class="book">
+        <div class="image-container">
+            <a href="{% url 'book' id=i.id %}"><img src="{{i.coverImage.url}}" alt="Book Cover of {{i.title}}"></a>
+        </div>
+        <div class="title-container"><a class="text-link" href="{% url 'book' id=i.id %}">{{i.title}}</a></div>
+        <div class="author-container"><a class="text-link" href="">{{i.author}}</a></div>
+        {% if i.discount_price %}
+        <div class="price-contatiner"><s>{{i.price}}</s></div>
+        <div class="discounted-price-container">
+            <p>£{{i.price}}</p>
+        </div>
+        {% else %}
+        <div class="price-contatiner">
+            <p>£{{i.price}}</p>
+        </div>
+
+        {% endif %}
+
+    </div>
+    {% endfor %}
+</div>
+
+<div class="footer">
+    <div>Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a>
+        from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</div>
 
 {% endblock %}
-
 

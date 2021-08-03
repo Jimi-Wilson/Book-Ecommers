@@ -35,17 +35,25 @@ class BooksView(View):
     def post(self, request, *args, **kwargs):
         context = {}
         filters = {}
+        count = 0
 
         form = SearchForm(request.POST)
         context['form'] = form
 
         search_field = form['search_field'].value().strip()
 
-        if self.books.filter(title=search_field).count() > 0:
-            filters['title'] = search_field
+        if self.books.filter(title__icontains=search_field).count() > 0:
+            filters['title__icontains'] = search_field
+            count = +1
 
-        if self.books.filter(author=search_field).count() > 0:
-            filters['author'] = search_field
+        if self.books.filter(author__icontains=search_field).count() > 0:
+            filters['author__icontains'] = search_field
+            count = +1
+
+        if count == 0:
+            context['search_error'] = True
+            context['search_field'] = search_field
+            return render(request, self.template_name, context)
 
         books = self.books.filter(**filters)
         context['books'] = books

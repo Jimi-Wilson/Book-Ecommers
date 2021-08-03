@@ -1,12 +1,16 @@
 .container {
     display: grid;
-    grid-template-rows: auto auto 1fr;
-    grid-template-areas: 
-    "nav"
-    "search-form"
-    "books";
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+        "nav"
+        "search-form"
+        "books"
+        "footer";
 }
 
+.footer {
+    grid-area: footer;
+}
 
 .navbar {
     grid-area: nav;
@@ -16,8 +20,32 @@
     grid-area: search-form;
 }
 
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-box {
+    width: 25%;
+    margin-top: 1em;
+    padding: .5em .5em;
+}
+
+button {
+    width: 3.4%;
+    height: 3.4%;
+    margin-top: 1em;
+}
+
+button img {
+    width: 100%;
+    height: 100%;
+}
+
+
 .books-content {
-    grid-area: books;        
+    grid-area: books;
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: repeat(6, 1fr);
@@ -25,6 +53,7 @@
     margin-left: 1em;
 
 }
+
 .book {
     position: relative;
 }
