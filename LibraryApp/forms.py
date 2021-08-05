@@ -1,3 +1,4 @@
+from Inventory.models import OrderItem
 from django import forms
 
 
@@ -10,3 +11,11 @@ class SearchForm(forms.Form):
             'class': 'search-box',
             'placeholder': 'Search...'
         }))
+
+
+class CartQuantityForm(forms.ModelForm):
+    quantity = forms.IntegerField(min_value=1)
+
+    class Meta:
+        model = OrderItem
+        fields = ('quantity', )

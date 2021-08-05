@@ -1,9 +1,11 @@
 from django.http import request
 from django.template import response
 from django.template.response import ContentNotRenderedError
+from django.urls.base import reverse_lazy
+from django.views.generic.edit import UpdateView
 from Inventory.models import Book, Order, OrderItem
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView
 from django.views import View
@@ -116,3 +118,23 @@ class CartView(View):
         order_items = OrderItem.objects.filter(order=order)
         context['order_items'] = order_items
         return render(request, self.template_name, context)
+
+
+class CartItemDeleteView(View):
+    def get(self, request, *args, **kwargs):
+        order_item_id = kwargs.get('id')
+        order = Order.objects.filter(user=request.user, complete=False).first()
+        order_items = OrderItem.objects.filter(id=order_item_id)
+        order_items.delete()
+        return redirect('cart')
+
+
+class CartQuantityUpdateView(UpdateView):
+    form_class = CartQuantityForm
+    success_url = reverse_lazy('cart')
+    template_name = 'library/updateQuantity.html'
+    queryset = OrderItem.objects.all()
+
+    def get_object(self):
+        id = self.kwargs.get('id')
+        return get_object_or_404(OrderItem, id=id)

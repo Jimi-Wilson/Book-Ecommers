@@ -2,11 +2,20 @@
 {% load static %}
 {% block head %}{% endblock head %}
 {% block content %}
+
+{% if not order_items %}
+<h1>Your Cart is empty</h1>  
+{% endif %}
+
+
+
 {% for i in order_items %}
 <h1>{{i.product.title}}</h1>
 <p>{{i.quantity}}</p>
-<p>{{i.get_total}}</p>
+<a href="{% url 'cartQuantityUpdate' id=i.id%}">Update Quantity</a>
+<p>£{{i.get_total}}</p>
 <a href="{% url 'book' id=i.product.id %}"><img src="{{i.product.coverImage.url}}" alt=""></a>
+<a class="deleteButton" href="{% url 'deleteItem' id=i.id%}" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
+</form>
 {% endfor %}
-
 {% endblock content %}
