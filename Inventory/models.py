@@ -17,7 +17,7 @@ class Book(models.Model):
     description = models.CharField(max_length=400)
     barcode = models.CharField(max_length=13)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    discounted_price = models.FloatField(null=True, blank=True)
+    discounted_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     borrowed = models.BooleanField(default=False)
     coverImage = models.ImageField(upload_to='bookCovers')
     tags = models.ManyToManyField(Tag)

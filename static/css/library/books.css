@@ -78,11 +78,7 @@ button img {
 .price-contatiner {
     display: flex;
     justify-content: center;
-}
-
-.discounted-price-contatiner {
-    display: flex;
-    justify-content: center;
+    align-items: center;
 }
 
 .text-link:visited {
@@ -94,4 +90,8 @@ button img {
     color: black;
     padding-top: .5em;
     max-width: 25ch;
+}
+
+.price {
+    padding-left: .5em;
 }

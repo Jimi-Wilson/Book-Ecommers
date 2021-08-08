@@ -29,15 +29,15 @@
         </div>
         <div class="title-container"><a class="text-link" href="{% url 'book' id=i.id %}">{{i.title}}</a></div>
         <div class="author-container"><a class="text-link" href="">{{i.author}}</a></div>
-        {% if i.discount_price %}
-        <div class="price-contatiner"><s>{{i.price}}</s></div>
-        <div class="discounted-price-container">
-            <p>£{{i.price}}</p>
+        {% if i.discounted_price %}
+        <div class="price-contatiner"><s>£{{i.price}}</s>
+            <p class="price">£{{i.discounted_price}}</p>
         </div>
-        {% else %}
+          {% else %}
         <div class="price-contatiner">
             <p>£{{i.price}}</p>
         </div>
+      
 
         {% endif %}
 

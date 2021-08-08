@@ -24,22 +24,28 @@ class AddBookForm(forms.ModelForm):
     tags = Tag.objects.all()
     title = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder': 'Type The Title'}))
+
     author = forms.CharField(widget=forms.TextInput(
         attrs={'placeholder': 'Type The Author'}))
+
     description = forms.CharField(
         max_length=400,
         widget=forms.Textarea(attrs={'placeholder': 'Type The Description'}))
+
     barcode = forms.CharField(
         max_length=13,
         min_length=13,
         widget=forms.TextInput(attrs={'placeholder': 'Type The Barcode'}))
-    price = forms.FloatField(widget=forms.NumberInput(
-        attrs={'placeholder': 'Type The Price'}))
-    discounted_price = forms.FloatField(
+
+    price = forms.DecimalField(
+        widget=forms.NumberInput(attrs={'placeholder': 'Type The Price'}), )
+
+    discounted_price = forms.DecimalField(
         required=False,
         help_text='This Fields Is Not Required',
         widget=forms.NumberInput(
             attrs={'placeholder': 'Type The Discount Price'}))
+
     coverImage = forms.ImageField(label='Book Cover :')
     tags = forms.ModelMultipleChoiceField(
         tags, help_text='Hold CTRL To Select Multiple', required=False)
