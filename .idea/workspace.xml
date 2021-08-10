@@ -8,10 +8,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea57ace8-e9f2-4fcd-9478-a545b2f62ef2" name="Default Changelist" comment="stable">
-      <change beforePath="$PROJECT_DIR$/LibraryApp/templates/library/books.html" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryApp/templates/library/books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LibraryApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryApp/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="ea57ace8-e9f2-4fcd-9478-a545b2f62ef2" name="Default Changelist" comment="stable" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -264,213 +261,167 @@
     <MESSAGE value="Search System Added" />
     <option name="LAST_COMMIT_MESSAGE" value="Search System Added" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="703" y="318" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1627740117918">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="703" y="318" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627740117918" />
-    <state width="1877" height="340" key="GridCell.Tab.0.bottom" timestamp="1627935961843">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="340" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627935961843" />
-    <state width="1877" height="340" key="GridCell.Tab.0.center" timestamp="1627935961843">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="340" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627935961843" />
-    <state width="1877" height="340" key="GridCell.Tab.0.left" timestamp="1627935961843">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="340" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627935961843" />
-    <state width="1877" height="340" key="GridCell.Tab.0.right" timestamp="1627935961843">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="340" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627935961843" />
-    <state width="1877" height="340" key="GridCell.Tab.1.bottom" timestamp="1627935961844">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="340" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627935961844" />
-    <state width="1877" height="340" key="GridCell.Tab.1.center" timestamp="1627935961843">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="340" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627935961843" />
-    <state width="1877" height="340" key="GridCell.Tab.1.left" timestamp="1627935961843">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="340" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627935961843" />
-    <state width="1877" height="340" key="GridCell.Tab.1.right" timestamp="1627935961844">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="340" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627935961844" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1627392794961">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627392794961" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1627487408380">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1627487408380" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>43</line>
+          <line>45</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>44</line>
+          <line>46</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>46</line>
+          <line>48</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>47</line>
+          <line>49</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>50</line>
+          <line>52</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>51</line>
+          <line>53</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>41</line>
+          <line>43</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>38</line>
+          <line>40</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>35</line>
+          <line>37</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>34</line>
+          <line>36</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>31</line>
+          <line>33</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>32</line>
+          <line>34</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>30</line>
+          <line>32</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>28</line>
+          <line>30</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>26</line>
+          <line>28</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>25</line>
+          <line>27</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>24</line>
+          <line>26</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>42</line>
+          <line>44</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>40</line>
+          <line>42</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>39</line>
+          <line>41</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>36</line>
+          <line>38</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>37</line>
+          <line>39</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>45</line>
+          <line>47</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>48</line>
+          <line>50</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>49</line>
+          <line>51</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>52</line>
+          <line>54</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>53</line>
+          <line>55</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>54</line>
+          <line>56</line>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>55</line>
+          <line>57</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>57</line>
+          <line>59</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>58</line>
+          <line>60</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/LibraryApp/views.py</url>
-          <line>59</line>
+          <line>61</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>

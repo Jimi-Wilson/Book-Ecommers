@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Add Shipping Address</title>
+
+{% endblock head %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Submit</button>
+</form>
+<p class="total-price">{{order.get_cart_total}}</p>
+{% endblock content %}

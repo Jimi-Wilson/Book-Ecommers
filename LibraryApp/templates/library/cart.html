@@ -16,6 +16,7 @@
 <p>£{{i.get_total}}</p>
 <a href="{% url 'book' id=i.product.id %}"><img src="{{i.product.coverImage.url}}" alt=""></a>
 <a class="deleteButton" href="{% url 'deleteItem' id=i.id%}" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
+<a href="{% url 'checkout' %}" class="checkout-btn">Checkout</a>
 </form>
 {% endfor %}
 {% endblock content %}
