@@ -34,3 +34,11 @@ class BillingAddressForm(forms.ModelForm):
     class Meta:
         model = BillingAddress
         fields = '__all__'
+
+
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = None
+        fields = '__all__'
+
+    pass

@@ -222,6 +222,14 @@ class BillingAddressView(View):
         return render(request, self.template_name, context)
 
 
+class PaymentView(View):
+    form = None
+
+    def get(self, request, *args, **kwargs):
+        context = {}
+        context['form'] = self.form
+
+
 class CheckoutView(View):
     post_template = 'templates/'
     template_name = 'library/checkout.html'

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models.fields import files
 from django.utils.decorators import method_decorator
 from .decorators import is_staff
 from django.shortcuts import get_object_or_404, render, redirect
@@ -9,6 +10,8 @@ from django.urls import reverse_lazy
 from .forms import *
 from Inventory.models import Book
 from accounts.models import User
+
+import stripe
 
 decorators = [login_required, is_staff]
 
@@ -34,10 +37,34 @@ class StaffRegisterView(CreateView):
 
 
 @method_decorator(decorators, name='dispatch')
-class AddBookView(CreateView):
-    form_class = AddBookForm
+class AddBookView(View):
+    form = AddBookForm
     success_url = reverse_lazy('viewBooks')
     template_name = 'inventory/addBook.html'
+
+    def get(self, request, *args, **kwargs):
+        context = {}
+        context['form'] = self.form
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        context = {}
+        form = AddBookForm(request.POST, request.FILES)
+        context['form'] = form
+        if form.is_valid():
+            obj = form.save()
+            stripe.api_key = "sk_test_51JNdQAEYUZT9DEEMRtu3ytEHKAxkDKIkb2uUkaLKqAF67cjjs9LlyqYXwAqmIYKCSvQY4PC6npqzjp8t54mar5Ky00I7CuKgdE"
+            product = stripe.Product.create(name=obj.title,
+                                            description=obj.description)
+
+            price = stripe.Price.create(
+                product=product['id'],
+                unit_amount=int(obj.price * 100),
+                currency='gbp',
+            )
+
+            return redirect('viewBooks')
+        return render(request, self.template_name, context)
 
 
 @method_decorator(decorators, name='dispatch')
