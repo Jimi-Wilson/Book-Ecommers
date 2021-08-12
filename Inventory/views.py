@@ -11,6 +11,7 @@ from .forms import *
 from Inventory.models import Book
 from accounts.models import User
 
+from Library import settings
 import stripe
 
 decorators = [login_required, is_staff]
@@ -53,7 +54,7 @@ class AddBookView(View):
         context['form'] = form
         if form.is_valid():
             obj = form.save()
-            stripe.api_key = "sk_test_51JNdQAEYUZT9DEEMRtu3ytEHKAxkDKIkb2uUkaLKqAF67cjjs9LlyqYXwAqmIYKCSvQY4PC6npqzjp8t54mar5Ky00I7CuKgdE"
+            stripe.api_key = settings.STRIPE_API_KEY
             product = stripe.Product.create(name=obj.title,
                                             description=obj.description)
 
@@ -62,7 +63,10 @@ class AddBookView(View):
                 unit_amount=int(obj.price * 100),
                 currency='gbp',
             )
+            obj.payment_id = price['id']
+            obj.product_id = product['id']
 
+            obj.save()
             return redirect('viewBooks')
         return render(request, self.template_name, context)
 

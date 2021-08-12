@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import fields
 from django.db.models.fields import files
-from Inventory.models import OrderItem, ShippingAddress, BillingAddress
+from Inventory.models import OrderItem, ShippingAddress
 from django import forms
 
 
@@ -27,18 +27,7 @@ class CartQuantityForm(forms.ModelForm):
 class ShippingAddressForm(forms.ModelForm):
     class Meta:
         model = ShippingAddress
-        fields = '__all__'
-
-
-class BillingAddressForm(forms.ModelForm):
-    class Meta:
-        model = BillingAddress
-        fields = '__all__'
-
-
-class PaymentForm(forms.ModelForm):
-    class Meta:
-        model = None
-        fields = '__all__'
-
-    pass
+        fields = [
+            'first_line_of_address', 'seccond_line_of_address', 'postcode',
+            'city', 'default_address'
+        ]

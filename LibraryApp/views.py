@@ -1,13 +1,17 @@
+from accounts.models import User
 from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.urls.base import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView
+from stripe.api_resources import line_item
 from Inventory.models import Book, Order, OrderItem
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView
 from django.views import View
 from .forms import *
+import stripe
+from Library import settings
 
 # Create your views here.
 
@@ -81,12 +85,14 @@ class AddItemToCartView(View):
     template_name = 'library/addItem.html'
 
     def get(self, request, *args, **kwargs):
+
         order = Order.objects.all()
-        order = Order.objects.filter(user=request.user, complete=False).first()
+        order = Order.objects.filter(user=request.user,
+                                     payment_complete=False).first()
+
         if not order:
             order = Order(user=request.user,
-                          complete=False,
-                          trasaction_id="egjipijrgwirgjeorgeijogreoikj")
+                          trasaction_id=Order.trasaction_id_gen())
             order.save()
 
         book_id = self.kwargs.get('id')
@@ -113,7 +119,9 @@ class CartView(View):
 
     def get(self, request, *args, **kwargs):
         context = {}
-        order = Order.objects.filter(user=request.user, complete=False).first()
+        order = Order.objects.filter(user=request.user, payment_complete=False)
+        order = order.filter(user=request.user).first()
+        print(order)
         context['order'] = order
         order_items = OrderItem.objects.filter(order=order)
         context['order_items'] = order_items
@@ -149,7 +157,8 @@ class ShippingAddressView(View):
         context = {}
         context['form'] = self.form
 
-        order = Order.objects.filter(user=request.user, complete=False).first()
+        order = Order.objects.filter(user=request.user,
+                                     payment_complete=False).first()
         context['order'] = order
         order_items = OrderItem.objects.filter(order=order)
         context['order_items'] = order_items
@@ -158,7 +167,8 @@ class ShippingAddressView(View):
     def post(self, request, *args, **kwargs):
         context = {}
         order = Order.objects.all()
-        order = Order.objects.filter(user=request.user, complete=False).first()
+        order = Order.objects.filter(user=request.user,
+                                     payment_complete=False).first()
         form = ShippingAddressForm(request.POST)
 
         if form.is_valid():
@@ -166,85 +176,53 @@ class ShippingAddressView(View):
             shipping_address = form.save()
             order.shipping_address = shipping_address
             order.save()
-
-            if shipping_address.is_billing_address == True:
-
-                first_line_of_address = shipping_address.first_line_of_address
-                seccond_line_of_address = shipping_address.seccond_line_of_address
-                postcode = shipping_address.postcode
-                city = shipping_address.city
-
-                bill = BillingAddress(first_line_of_address=shipping_address.
-                                      first_line_of_address,
-                                      seccond_line_of_address=shipping_address.
-                                      seccond_line_of_address,
-                                      postcode=shipping_address.postcode,
-                                      city=shipping_address.city)
-                bill.save()
-                order.billing_address = bill
-                order.save()
+            if shipping_address.default_address:
+                request.user.default_shipping_address = shipping_address
 
             return redirect('checkout')
         context['form'] = form
         return render(request, self.template_name, context)
-
-
-class BillingAddressView(View):
-    template_name = 'library/shipping.html'
-    form = BillingAddressForm
-
-    def get(self, request, *args, **kwargs):
-        context = {}
-        context['form'] = self.form
-
-        order = Order.objects.filter(user=request.user, complete=False).first()
-        context['order'] = order
-        order_items = OrderItem.objects.filter(order=order)
-        context['order_items'] = order_items
-        return render(request, self.template_name, context)
-
-    def post(self, request, *args, **kwargs):
-
-        context = {}
-        order = Order.objects.all()
-        order = Order.objects.filter(user=request.user, complete=False).first()
-        form = BillingAddressForm(request.POST)
-
-        if form.is_valid():
-
-            billing_address = form.save()
-            order.billing_address = billing_address
-            order.save()
-
-            return redirect('checkout')
-
-        context['form'] = form
-        return render(request, self.template_name, context)
-
-
-class PaymentView(View):
-    form = None
-
-    def get(self, request, *args, **kwargs):
-        context = {}
-        context['form'] = self.form
 
 
 class CheckoutView(View):
     post_template = 'templates/'
-    template_name = 'library/checkout.html'
 
     def get(self, request, *args, **kwargs):
-        order = Order.objects.filter(user=request.user, complete=False).first()
+        order = Order.objects.filter(user=request.user,
+                                     payment_complete=False).first()
         if order.shipping_address == None:
             return redirect('shipping')
 
-        elif (order.billing_address
-              == None) and (order.shipping_address.is_billing_address
-                            == False):
-            return redirect('billing')
+        order_items = OrderItem.objects.all().filter(order=order)
+        line_items = []
+        item = {}
 
+        for i in order_items:
+            item['price'] = i.product.payment_id
+            item['quantity'] = i.quantity
+            line_items.append(item)
+            item = {}
+
+        stripe.api_key = settings.STRIPE_API_KEY
+
+        checkout_session = stripe.checkout.Session.create(
+            payment_method_types=[
+                'card',
+            ],
+            line_items=line_items,
+            mode='payment',
+            success_url='http://127.0.0.1:8000/cart/checkout/success',
+            cancel_url='http://127.0.0.1:8000/cart/checkout/cancel',
+        )
+        return redirect(checkout_session.url)
+
+
+class CheckoutSuccessView(View):
+    template_name = 'payment/success.html'
+
+    def get(self, request, *args, **kwargs):
+        order = Order.objects.filter(user=request.user,
+                                     payment_complete=False).first()
+        order.payment_complete = True
+        order.save()
         return render(request, self.template_name)
-
-    def post(self, request, *args, **kwargs):
-        pass

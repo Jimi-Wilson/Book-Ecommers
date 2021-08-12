@@ -1,8 +1,9 @@
-from typing import Set
 from django.db import models
-from django.db.models.base import Model
 from django.db.models.deletion import SET_NULL
 from accounts.models import User
+
+from random import choice
+from string import ascii_lowercase
 
 
 class Tag(models.Model):
@@ -25,39 +26,31 @@ class Book(models.Model):
     borrowed = models.BooleanField(default=False)
     coverImage = models.ImageField(upload_to='bookCovers')
     tags = models.ManyToManyField(Tag)
+    payment_id = models.CharField(max_length=200, null=True)
+    product_id = models.CharField(max_length=200, null=True)
 
     def __str__(self):
         return self.title
 
 
-class BillingAddress(models.Model):
-    first_line_of_address = models.CharField(max_length=200)
-    seccond_line_of_address = models.CharField(max_length=200)
-    postcode = models.CharField(max_length=8)
-    city = models.CharField(max_length=200, null=True)
-    default_address = models.BooleanField(default=False)
-
-
 class ShippingAddress(models.Model):
+    user = models.ForeignKey(User, on_delete=SET_NULL, null=True)
     first_line_of_address = models.CharField(max_length=200)
     seccond_line_of_address = models.CharField(max_length=200)
     postcode = models.CharField(max_length=8)
     city = models.CharField(max_length=200, null=True)
-    is_billing_address = models.BooleanField(default=False)
     default_address = models.BooleanField(default=False)
 
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=SET_NULL, null=True)
     date_orderd = models.DateTimeField(auto_now_add=True, null=True)
+    payment_complete = models.BooleanField(default=False, null=True)
     complete = models.BooleanField(default=False, null=True)
     trasaction_id = models.CharField(max_length=200, unique=True)
     shipping_address = models.ForeignKey(ShippingAddress,
                                          on_delete=SET_NULL,
                                          null=True)
-    billing_address = models.ForeignKey(BillingAddress,
-                                        on_delete=SET_NULL,
-                                        null=True)
 
     def __str__(self) -> str:
         return str(self.id)
@@ -75,6 +68,14 @@ class Order(models.Model):
         order_items = self.orderitem_set.all()
         total = sum([item.quantity for item in order_items])
         return total
+
+    def trasaction_id_gen():
+        string = ""
+        lst = list(ascii_lowercase)
+        for i in range(13):
+            string = string + str(choice(lst))
+
+        return string
 
 
 class OrderItem(models.Model):

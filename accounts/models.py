@@ -3,15 +3,19 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None,firstName=None ,lastName=None, is_staff=False, is_admin=False):
+    def create_user(self,
+                    email,
+                    password=None,
+                    firstName=None,
+                    lastName=None,
+                    is_staff=False,
+                    is_admin=False):
         if not email:
             raise ValueError("Users must have an email address")
         if not password:
             raise ValueError("Users must have a password")
 
-        user_obj = self.model(
-            email=self.normalize_email(email)
-        )
+        user_obj = self.model(email=self.normalize_email(email))
         user_obj.set_password(password)  # change user password
         user_obj.staff = is_staff
         user_obj.admin = is_admin
@@ -21,11 +25,7 @@ class UserManager(BaseUserManager):
         return user_obj
 
     def create_staffuser(self, email, password=None):
-        user = self.create_user(
-            email,
-            password=password,
-            is_staff=True
-        )
+        user = self.create_user(email, password=password, is_staff=True)
         return user
 
     def create_superuser(self, email, password=None):
@@ -44,7 +44,6 @@ class User(AbstractBaseUser):
     lastName = models.CharField(max_length=255, blank=True, null=True)
     staff = models.BooleanField(default=False)  # staff user non superuser
     admin = models.BooleanField(default=False)  # superuser
-
 
     USERNAME_FIELD = 'email'  # username
     # USERNAME_FIELD and password are required by default
@@ -72,5 +71,3 @@ class User(AbstractBaseUser):
     @property
     def is_admin(self):
         return self.admin
-
-

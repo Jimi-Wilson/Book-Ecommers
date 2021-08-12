@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block head %}
+  <title>Thanks for your order!</title>
+  <style>
+    .container {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      grid-template-areas: 
+      "nav"
+      "c";
+    }
+
+    .navbar {
+      grid-area: nav;
+    }
+
+    .content {
+      grid-area: c;
+      margin-top: 5em;
+    }
+    h1, p {
+      display: flex;
+      justify-content: center;
+      margin-top: 2em;
+
+    }
+
+    a:active {
+      text-decoration: none;
+      color: black;
+    }
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+
+  {% endblock head %}
+
+{% block content %}
+<div class="content">
+  <h1>Payment Successful</h1>
+  <p>You Will Redirected Home Soon.</p>
+  <p><a href="{% url 'home' %}">If Not Click This</a></p>
+</div>
+
+
+
+
+<script>
+
+
+setTimeout(function(){
+  window.location.replace("http://127.0.0.1:8000/");
+}, 2000)
+
+
+
+</script>
+{% endblock content %}
+
+
