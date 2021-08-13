@@ -92,7 +92,7 @@ class AddItemToCartView(View):
 
         if not order:
             order = Order(user=request.user,
-                          trasaction_id=Order.trasaction_id_gen())
+                          transaction_id=Order.transaction_id_gen())
             order.save()
 
         book_id = self.kwargs.get('id')
@@ -225,4 +225,11 @@ class CheckoutSuccessView(View):
                                      payment_complete=False).first()
         order.payment_complete = True
         order.save()
+        return render(request, self.template_name)
+
+
+class CheckoutCancelView(View):
+    template_name = 'payment/cancel.html'
+
+    def get(self, request, *args, **kwargs):
         return render(request, self.template_name)

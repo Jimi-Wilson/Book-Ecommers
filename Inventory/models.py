@@ -47,7 +47,7 @@ class Order(models.Model):
     date_orderd = models.DateTimeField(auto_now_add=True, null=True)
     payment_complete = models.BooleanField(default=False, null=True)
     complete = models.BooleanField(default=False, null=True)
-    trasaction_id = models.CharField(max_length=200, unique=True)
+    transaction_id = models.CharField(max_length=200, unique=True)
     shipping_address = models.ForeignKey(ShippingAddress,
                                          on_delete=SET_NULL,
                                          null=True)
@@ -69,7 +69,7 @@ class Order(models.Model):
         total = sum([item.quantity for item in order_items])
         return total
 
-    def trasaction_id_gen():
+    def transaction_id_gen():
         string = ""
         lst = list(ascii_lowercase)
         for i in range(13):

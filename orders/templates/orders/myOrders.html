@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Orders</title>
+{% endblock head %}
+{% block content %}
+
+{% for i in orders %}
+<a href="" class="transaction_id">Transaction ID: {{i.transaction_id}}</a>
+<p class="total-price">{{i.get_cart_total}}</p>
+{% endfor %}
+
+{% endblock content %}

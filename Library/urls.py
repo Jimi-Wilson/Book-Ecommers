@@ -23,7 +23,8 @@ urlpatterns = [
     path('staff/', include('Inventory.urls')),
     path('account/', include('accounts.urls')),
     path('', include("django.contrib.auth.urls")),
-    path('', include('LibraryApp.urls'))
+    path('', include('LibraryApp.urls')),
+    path('', include('orders.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
