@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block head %}
 <title>Orders</title>
+<link rel="stylesheet" href="{% static 'css/library/orders/myorders.css' %}">
 {% endblock head %}
 {% block content %}
-
-{% for i in orders %}
-<a href="" class="transaction_id">Transaction ID: {{i.transaction_id}}</a>
-<p class="total-price">{{i.get_cart_total}}</p>
-{% endfor %}
-
+    <div class="content">
+    {% for i in orders %}
+    <div class="order">
+        <a href="{% url 'order' id=i.id %}" class="transaction_id">Transaction ID: {{i.transaction_id}}</a>
+        <p class="total-price">Total Price: {{i.get_cart_total}}</p>
+        <a class="view-order-btn" href="{% url 'order' id=i.id %}">View Order</a>
+    </div>
+    {% endfor %}
+</div>
 {% endblock content %}

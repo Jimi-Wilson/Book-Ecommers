@@ -1,0 +1,36 @@
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "navbar"
+        "content";
+    background-color: #2C394B;
+}
+
+
+.navbar {
+    grid-area: navbar;
+}
+
+
+.content {
+    grid-area: content;
+    margin: 5em;
+    margin-left: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.total-price {
+    margin-left: 5em;
+}
+
+.view-order-btn {
+    padding: .5em;
+    background-color: #082032;
+    color: #334756;
+    text-decoration: none;
+    border-radius: 1em;
+}

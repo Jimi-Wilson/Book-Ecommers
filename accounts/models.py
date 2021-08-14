@@ -1,5 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.db.models.deletion import SET_NULL
+
+
+class ShippingAddressModel(models.Model):
+    first_line_of_address = models.CharField(max_length=200)
+    seccond_line_of_address = models.CharField(max_length=200)
+    postcode = models.CharField(max_length=8)
+    city = models.CharField(max_length=200, null=True)
 
 
 class UserManager(BaseUserManager):
@@ -9,7 +17,8 @@ class UserManager(BaseUserManager):
                     firstName=None,
                     lastName=None,
                     is_staff=False,
-                    is_admin=False):
+                    is_admin=False,
+                    shipping_address=None):
         if not email:
             raise ValueError("Users must have an email address")
         if not password:
@@ -21,6 +30,8 @@ class UserManager(BaseUserManager):
         user_obj.admin = is_admin
         user_obj.firstName = firstName
         user_obj.lastName = firstName
+        user_obj.shipping_address = shipping_address
+
         user_obj.save(using=self._db)
         return user_obj
 
@@ -44,6 +55,9 @@ class User(AbstractBaseUser):
     lastName = models.CharField(max_length=255, blank=True, null=True)
     staff = models.BooleanField(default=False)  # staff user non superuser
     admin = models.BooleanField(default=False)  # superuser
+    shipping_address = models.ForeignKey(ShippingAddressModel,
+                                         on_delete=SET_NULL,
+                                         null=True)
 
     USERNAME_FIELD = 'email'  # username
     # USERNAME_FIELD and password are required by default

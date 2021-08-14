@@ -1,7 +1,5 @@
-from django.db import models
-from django.db.models import fields
-from django.db.models.fields import files
-from Inventory.models import OrderItem, ShippingAddress
+from Inventory.models import OrderItem, Tag
+from accounts.models import ShippingAddressModel
 from django import forms
 
 
@@ -26,8 +24,14 @@ class CartQuantityForm(forms.ModelForm):
 
 class ShippingAddressForm(forms.ModelForm):
     class Meta:
-        model = ShippingAddress
+        model = ShippingAddressModel
         fields = [
             'first_line_of_address', 'seccond_line_of_address', 'postcode',
-            'city', 'default_address'
+            'city'
         ]
+
+
+class FilterForm(forms.Form):
+    tags = Tag.objects.all()
+    tags = forms.ModelMultipleChoiceField(
+        tags, help_text='Hold CTRL To Select Multiple', required=False)

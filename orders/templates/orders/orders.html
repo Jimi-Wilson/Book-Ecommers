@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<title>Order {{order.transaction_id}}</title>
+<link rel="stylesheet" href="{% static 'css/library/orders/order.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="content">
+    <h1 class="transaction-id">Order: {{order.transaction_id}}</h1>
+    {% for i in order_items %}
+    <div class="item">
+        <img class="book-cover" src="{{i.product.coverImage.url}}" alt="">
+        <p class="book-title">{{i.product.title}}</p>
+        <p class="book-price">£{{i.product.price}}</p>
+    </div>
+    {% endfor %}
+<p class="total-price">Total Price: £{{order.get_cart_total}}</p>
+
+<div class="shipping-address">
+    <h2>Shipped Info</h2>
+    {% if order.complete %}
+        <h3>Your Order Has Been Shipped To :</h3>
+    {% else %}
+        <h3>Your Order Will Be Shipped To :</h3>      
+    {% endif %}
+    <p>Adress Line 1 : {{order.shipping_address.first_line_of_address}}</p>
+    <p>Adress Line 2 : {{order.shipping_address.seccond_line_of_address}}</p>
+    <p>Postcode : {{order.shipping_address.postcode}}</p>
+    <p>City : {{order.shipping_address.city}}</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+{% endblock content %}

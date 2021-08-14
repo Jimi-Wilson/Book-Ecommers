@@ -1,0 +1,79 @@
+body {
+    background-color: #2c394b;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 'nav'
+        'content'
+        'footer';
+}
+
+.navbar {
+    grid-area: nav;
+}
+
+.content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+    margin-left: 20em;
+
+
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+
+}
+
+.book-cover {
+    width: 5%;
+}
+
+
+.book-title {
+    color: white;
+    margin-left: 1em;
+}
+
+.book-price {
+    color: white;
+    margin-left: 2em;
+}
+
+.total-price {
+    color: white;
+    margin-left: 50em;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.transaction-id {
+    color: white;
+}
+
+.shipping-address {}
+
+p {
+    color: white;
+    font-size: 1.25em;
+
+}
+
+h2 {
+    color: white;
+    font-size: 1.875em;
+
+}
+
+h3 {
+    color: white;
+    font-size: 1.5em;
+}

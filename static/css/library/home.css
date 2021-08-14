@@ -1,0 +1,114 @@
+.container {
+    display: grid;
+    grid-template-rows: auto 6.5fr .5fr;
+    grid-template-areas:
+        "navbar"
+        "content"
+        "footer";
+
+}
+
+.navbar {
+    grid-area: navbar;
+    z-index: 2;
+}
+
+
+.content {
+    grid-area: content;
+    position: relative;
+    background-color: #2C394B;
+    z-index: 1;
+
+}
+
+.circle {
+    position: absolute;
+    width: 53em;
+    height: 54em;
+    left: -15em;
+    top: -15em;
+    border-radius: 50%;
+    background-color: #082032;
+    z-index: -1;
+
+}
+
+
+.underline {
+    position: absolute;
+    width: 6.5em;
+    height: .3125em;
+    left: 13.18em;
+    top: 13.75em;
+
+    background: #FF4C29;
+    border-radius: 5.875em;
+    z-index: -1;
+
+}
+
+
+.title {
+    position: absolute;
+    width: 201px;
+    height: 84px;
+    left: 115px;
+    top: 101px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 72px;
+    line-height: 84px;
+
+    color: #FFFFFF;
+    z-index: -1;
+
+}
+
+
+
+
+.catch {
+    position: absolute;
+    width: 287px;
+    height: 56px;
+    left: 84px;
+    top: 220px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+.books-btn {
+    position: absolute;
+    height: 28px;
+    left: 138px;
+    top: 340px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 28px;
+
+    text-decoration-line: none;
+
+    color: #FFFFFF;
+    padding: .5em;
+    background-color: #2C394B;
+    border-radius: 1em;
+    z-index: 1;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #082032;
+    height: 15vh;
+}

@@ -1,9 +1,6 @@
-from accounts.models import User
 from django.contrib.auth.decorators import login_required
-from django.http import request
 from django.urls.base import reverse_lazy
-from django.views.generic.edit import CreateView, UpdateView
-from stripe.api_resources import line_item
+from django.views.generic.edit import UpdateView
 from Inventory.models import Book, Order, OrderItem
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.decorators import method_decorator
@@ -27,9 +24,10 @@ class BooksView(View):
 
     def get(self, request, *args,
             **kwargs):  # Gets all books and passes them to context
-        context = {}
+        context = {'books': self.books}
 
-        context['books'] = self.books
+        f_form = FilterForm()
+        context['f_form'] = f_form
 
         form = SearchForm()
         context['form'] = form
@@ -42,24 +40,39 @@ class BooksView(View):
 
         form = SearchForm(request.POST)
         context['form'] = form
+        f_form = FilterForm()
+        context['f_form'] = f_form
 
-        search_field = form['search_field'].value().strip()
+        try:
+            search_field = form['search_field'].value().strip()
 
-        if self.books.filter(title__icontains=search_field).count() > 0:
-            filters['title__icontains'] = search_field
-            count = +1
+            if self.books.filter(title__icontains=search_field).count() > 0:
+                filters['title__icontains'] = search_field
+                count = +1
 
-        if self.books.filter(author__icontains=search_field).count() > 0:
-            filters['author__icontains'] = search_field
-            count = +1
+            if self.books.filter(author__icontains=search_field).count() > 0:
+                filters['author__icontains'] = search_field
+                count = +1
 
-        if count == 0:
-            context['search_error'] = True
-            context['search_field'] = search_field
-            return render(request, self.template_name, context)
+            if count == 0:
+                context['search_error'] = True
+                context['search_field'] = search_field
+                return render(request, self.template_name, context)
 
-        books = self.books.filter(**filters)
-        context['books'] = books
+            selected_books = self.books.filter(**filters)
+            context['books'] = selected_books
+
+        except AttributeError:
+            if f_form := FilterForm(request.POST):
+                context['f_form'] = f_form
+
+                tags = f_form['tags'].value()
+                if tags:
+                    selected_books = set(self.books.filter(tags__in=tags))
+                    context['books'] = selected_books
+                    context['f_form'] = f_form
+                    return render(request, self.template_name, context)
+
         return render(request, self.template_name, context)
 
 
@@ -149,6 +162,7 @@ class CartQuantityUpdateView(UpdateView):
         return get_object_or_404(OrderItem, id=id)
 
 
+@method_decorator(login_required, name='dispatch')
 class ShippingAddressView(View):
     template_name = 'library/shipping.html'
     form = ShippingAddressForm
@@ -159,6 +173,10 @@ class ShippingAddressView(View):
 
         order = Order.objects.filter(user=request.user,
                                      payment_complete=False).first()
+
+        if request.user.shipping_address:
+            order.shipping_address = request.user.shipping_address
+            return redirect('checkout')
         context['order'] = order
         order_items = OrderItem.objects.filter(order=order)
         context['order_items'] = order_items
@@ -176,21 +194,27 @@ class ShippingAddressView(View):
             shipping_address = form.save()
             order.shipping_address = shipping_address
             order.save()
-            if shipping_address.default_address:
-                request.user.default_shipping_address = shipping_address
 
+            request.user.shipping_address = shipping_address
+            request.user.save()
             return redirect('checkout')
+
         context['form'] = form
         return render(request, self.template_name, context)
 
 
+@method_decorator(login_required, name='dispatch')
 class CheckoutView(View):
     post_template = 'templates/'
 
     def get(self, request, *args, **kwargs):
         order = Order.objects.filter(user=request.user,
                                      payment_complete=False).first()
-        if order.shipping_address == None:
+
+        if shipping_address := request.user.shipping_address:
+            order.shipping_address = shipping_address
+
+        elif order.shipping_address == None:
             return redirect('shipping')
 
         order_items = OrderItem.objects.all().filter(order=order)
@@ -217,6 +241,7 @@ class CheckoutView(View):
         return redirect(checkout_session.url)
 
 
+@method_decorator(login_required, name='dispatch')
 class CheckoutSuccessView(View):
     template_name = 'payment/success.html'
 
@@ -228,6 +253,7 @@ class CheckoutSuccessView(View):
         return render(request, self.template_name)
 
 
+@method_decorator(login_required, name='dispatch')
 class CheckoutCancelView(View):
     template_name = 'payment/cancel.html'
 

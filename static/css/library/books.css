@@ -1,11 +1,24 @@
 .container {
     display: grid;
-    grid-template-rows: auto auto 1fr auto;
+    grid-template-rows: auto max-content 1fr auto;
+    grid-template-columns: auto 1fr;
     grid-template-areas:
-        "nav"
-        "search-form"
-        "books"
-        "footer";
+        "nav nav"
+        " s  search-form "
+        "filter-form books"
+        "footer footer";
+}
+
+
+.s {
+    grid-area: s;
+}
+
+.filter-form {
+    grid-area: filter-form;
+    display: flex;
+    flex-direction: column;
+    margin-left: .2em;
 }
 
 .footer {
@@ -16,11 +29,9 @@
     grid-area: nav;
 }
 
+
 .search-form {
     grid-area: search-form;
-}
-
-form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +43,7 @@ form {
     padding: .5em .5em;
 }
 
-button {
+.search-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +52,7 @@ button {
     margin-top: 1em;
 }
 
-button img {
+.search-btn-img {
     width: 2em;
 }
 

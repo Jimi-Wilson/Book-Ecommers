@@ -1,9 +1,10 @@
 .container {
     display: grid;
-    grid-template-rows: auto 1fr ;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
-    "nav"
-    "content";
+        "nav"
+        "content"
+        "footer";
 }
 
 .navbar {
@@ -12,4 +13,8 @@
 
 .content {
     grid-area: content;
+}
+
+.footer {
+    grid-area: footer;
 }

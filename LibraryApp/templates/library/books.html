@@ -7,14 +7,19 @@
 {% block content %}
 
 
-<div class="search-from">
-    <form method="post">
-        {% csrf_token %}
-        {{form}}
-        <button type="submit"><img src="{% static 'img/search.png' %}" alt=""></button>
-    </form>
-</div>
+<form class="search-form" method="post">
+    {% csrf_token %}
+    {{form}}
+    <button class="search-btn" type="submit"><img class="search-btn-img"src="{% static 'img/search.png' %}" alt=""></button>
+</form>
 
+<form class="filter-form" method="post">
+    {% csrf_token %}
+    {{f_form}}
+    <button type="submit">Apply Filters</button>
+</form>
+
+<div class="s"></div>
 
 {% if search_error %}
 <h1>No Results Found</h1>

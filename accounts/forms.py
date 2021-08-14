@@ -17,3 +17,18 @@ class RegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('firstName', 'lastName', 'email', 'password1', 'password2')
+
+
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField(widget=forms.TextInput(
+        attrs={'placeholder': 'Type Your Email Address'}))
+    firstName = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'Type Your First Name'}),
+        label="First Name:")
+    lastName = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'Type Your Last Name'}),
+        label="Last Name:")
+
+    class Meta:
+        model = User
+        fields = ('firstName', 'lastName', 'email')

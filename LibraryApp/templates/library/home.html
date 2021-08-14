@@ -1,11 +1,22 @@
 {% extends "base.html" %}
+{% load static %}
 {% block head %}
 <title>Home</title>
+<link rel="stylesheet" href="{% static 'css/library/home.css' %}">
 {% endblock %}
 
 {% block content %}
+<div class="content">
+    <div class="circle"></div>
+    <h1 class=title>Books</h1>
+    <p class="catch">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
+    <a class="books-btn" href="{% url 'books' %}">Explore Now</a>
+    <div class="underline"></div>
+</div>
+<div class="footer">
+    <a href="{% url 'sHome' %}">Staff</a>
 
-<a href="{% url 'sHome' %}">Staff</a>
+</div>
 
 
 {% endblock %}

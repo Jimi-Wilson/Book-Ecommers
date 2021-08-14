@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.deletion import SET_NULL
-from accounts.models import User
+from accounts.models import User, ShippingAddressModel
 
 from random import choice
 from string import ascii_lowercase
@@ -33,22 +33,13 @@ class Book(models.Model):
         return self.title
 
 
-class ShippingAddress(models.Model):
-    user = models.ForeignKey(User, on_delete=SET_NULL, null=True)
-    first_line_of_address = models.CharField(max_length=200)
-    seccond_line_of_address = models.CharField(max_length=200)
-    postcode = models.CharField(max_length=8)
-    city = models.CharField(max_length=200, null=True)
-    default_address = models.BooleanField(default=False)
-
-
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=SET_NULL, null=True)
     date_orderd = models.DateTimeField(auto_now_add=True, null=True)
     payment_complete = models.BooleanField(default=False, null=True)
     complete = models.BooleanField(default=False, null=True)
     transaction_id = models.CharField(max_length=200, unique=True)
-    shipping_address = models.ForeignKey(ShippingAddress,
+    shipping_address = models.ForeignKey(ShippingAddressModel,
                                          on_delete=SET_NULL,
                                          null=True)
 
