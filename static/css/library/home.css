@@ -37,13 +37,13 @@
 
 .underline {
     position: absolute;
-    width: 6.5em;
-    height: .3125em;
-    left: 13.18em;
-    top: 13.75em;
+    width: 104px;
+    height: 5px;
+    left: 320px;
+    top: 220px;
 
     background: #FF4C29;
-    border-radius: 5.875em;
+    border-radius: 94px;
     z-index: -1;
 
 }
@@ -51,19 +51,18 @@
 
 .title {
     position: absolute;
-    width: 201px;
-    height: 84px;
-    left: 115px;
-    top: 101px;
+    width: 392px;
+    height: 75px;
+    left: 34px;
+    top: 117px;
 
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 72px;
-    line-height: 84px;
-
-    color: #FFFFFF;
+    font-size: 64px;
+    line-height: 75px;
     z-index: -1;
+    color: white;
 
 }
 
@@ -90,7 +89,7 @@
     position: absolute;
     height: 28px;
     left: 138px;
-    top: 340px;
+    top: 300px;
 
     font-family: Roboto;
     font-style: normal;

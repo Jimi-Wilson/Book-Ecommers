@@ -1,73 +1,53 @@
-<div class="navbar">
-
-  <ul>
-    <li><a class="navlink" href="{% url 'home' %}">Home</a></li>
-    <li><a class="navlink" href="{% url 'books' %}">Books</a></li>
-    <li><a class="navlink" href="{% url 'myOrders' %}">My Orders</a></li>
-    <li><a class="account-link" href="{% url 'profile' %}">Account</a></li>
-    <li><a class="account-link" href="{% url 'cart' %}">Cart</a></li>
-
-  </ul>
-
-
-</div>
-
-
-
 <style>
   body {
     padding: 0;
     margin: 0;
+    background-color: #2C394B; 
   }
-
 
   .navbar {
-    background-color: #082032;
     overflow: hidden;
-
-  }
-
-
-  li {
-    padding-right: 5%;
-  }
-
-
-  .navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-
-  .account-link {
-    float: right;
-    color: #f2f2f2;
+    background-color: #082032;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
   }
 
-  .navlink {
-    float: left;
-    color: #f2f2f2;
+  .navbar a {
+    display: inline-block;
+    color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 1em;
+    margin-right: 5%;
     text-decoration: none;
+    font-size: 1.2em;
   }
 
+  .navbar a::after {
+    content: '';
+    width: 0%;
+    height: .2125em;
+    display: block;
+    background-color: #FF4C29;
+    border-radius: 5.875em;
 
+  }
+
+  .navbar a:hover::after {
+    width: 100%;
+    transition: all .5s;
+  }
 
   .navbar a:hover {
     background-color: #334756;
     color: white;
 
   }
-
-
-  .navbar a:active {
-    background-color: #4CAF50;
-    color: white;
-  }
 </style>
+
+
+<div class="navbar">
+  <a class="navlink" href="{% url 'home' %}">Home</a>
+  <a class="navlink" href="{% url 'books' %}">Books</a>
+  <a class="navlink" href="{% url 'myOrders' %}">My Orders</a>
+  <a class="navlink" class="account-link" href="{% url 'profile' %}">Account</a>
+  <a class="navlink" class="account-link" href="{% url 'cart' %}">Cart</a>
+</div>

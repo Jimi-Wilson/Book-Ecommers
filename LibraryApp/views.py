@@ -20,12 +20,12 @@ class HomeView(TemplateView):
 
 class BooksView(View):
     template_name = 'library/books.html'
-    books = Book.objects.all()
 
     def get(self, request, *args,
             **kwargs):  # Gets all books and passes them to context
-        context = {'books': self.books}
-
+        context = {}
+        books = Book.objects.all()
+        context['books'] = books
         f_form = FilterForm()
         context['f_form'] = f_form
 
@@ -38,9 +38,10 @@ class BooksView(View):
         filters = {}
         count = 0
 
+        books = Book.objects.all()
         form = SearchForm(request.POST)
         context['form'] = form
-        f_form = FilterForm()
+        f_form = FilterForm(request.POST)
         context['f_form'] = f_form
 
         try:
@@ -59,7 +60,7 @@ class BooksView(View):
                 context['search_field'] = search_field
                 return render(request, self.template_name, context)
 
-            selected_books = self.books.filter(**filters)
+            selected_books = books.filter(**filters)
             context['books'] = selected_books
 
         except AttributeError:
@@ -68,7 +69,7 @@ class BooksView(View):
 
                 tags = f_form['tags'].value()
                 if tags:
-                    selected_books = set(self.books.filter(tags__in=tags))
+                    selected_books = set(books.filter(tags__in=tags))
                     context['books'] = selected_books
                     context['f_form'] = f_form
                     return render(request, self.template_name, context)
