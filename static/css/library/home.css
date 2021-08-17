@@ -37,10 +37,10 @@
 
 .underline {
     position: absolute;
-    width: 104px;
+    width: 6.5em;
     height: 5px;
     left: 320px;
-    top: 220px;
+    top: 225px;
 
     background: #FF4C29;
     border-radius: 94px;
@@ -51,14 +51,14 @@
 
 .title {
     position: absolute;
-    width: 392px;
+    width: auto;
     height: 75px;
     left: 34px;
     top: 117px;
 
-    font-family: Roboto;
+    font-family: 'Roboto Slab', serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 100;
     font-size: 64px;
     line-height: 75px;
     z-index: -1;
@@ -71,14 +71,13 @@
 
 .catch {
     position: absolute;
-    width: 287px;
     height: 56px;
-    left: 84px;
+    left: 110px;
     top: 220px;
 
-    font-family: Roboto;
+    font-family: 'Roboto Slab', serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 100;
     font-size: 24px;
     line-height: 28px;
 
@@ -91,9 +90,9 @@
     left: 138px;
     top: 300px;
 
-    font-family: Roboto;
+    font-family: 'Roboto Slab', serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 100;
     font-size: 20px;
     line-height: 28px;
 
@@ -105,6 +104,29 @@
     border-radius: 1em;
     z-index: 1;
 }
+
+.stars-img {
+    position: absolute;
+    transform: scale(1.6);
+    width: 607.15px;
+    height: 276.19px;
+    right: 400px;
+    top: 110px;
+
+}
+
+.moon-img {
+    position: absolute;
+    transform: scale(1.9);
+    width: 132px;
+    height: 132px;
+    right: 100px;
+    top: 100px;
+}
+
+
+
+
 
 .footer {
     grid-area: footer;
