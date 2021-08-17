@@ -96,7 +96,7 @@ class BookView(TemplateView):
 
 @method_decorator(login_required, name='dispatch')
 class AddItemToCartView(View):
-    template_name = 'library/addItem.html'
+    template_name = 'cart/addItem.html'
 
     def get(self, request, *args, **kwargs):
 
@@ -116,9 +116,8 @@ class AddItemToCartView(View):
             order_item = OrderItem.objects.filter(product=book,
                                                   order=order).first()
             order_item.quantity = order_item.quantity + 1
-            print(order_item.quantity)
             order_item.save()
-            return render(request, self.template_name)
+            return render(request, self.template_name, context={'book': book})
 
         else:
             order_items = OrderItem(product=book, order=order, quantity=+1)
@@ -129,7 +128,7 @@ class AddItemToCartView(View):
 
 @method_decorator(login_required, name='dispatch')
 class CartView(View):
-    template_name = 'library/cart.html'
+    template_name = 'cart/cart.html'
 
     def get(self, request, *args, **kwargs):
         context = {}
@@ -155,7 +154,7 @@ class CartItemDeleteView(View):
 class CartQuantityUpdateView(UpdateView):
     form_class = CartQuantityForm
     success_url = reverse_lazy('cart')
-    template_name = 'library/updateQuantity.html'
+    template_name = 'cart/updateQuantity.html'
     queryset = OrderItem.objects.all()
 
     def get_object(self):
@@ -177,6 +176,7 @@ class ShippingAddressView(View):
 
         if request.user.shipping_address:
             order.shipping_address = request.user.shipping_address
+            order.save()
             return redirect('checkout')
         context['order'] = order
         order_items = OrderItem.objects.filter(order=order)
@@ -213,7 +213,9 @@ class CheckoutView(View):
                                      payment_complete=False).first()
 
         if shipping_address := request.user.shipping_address:
+            print(shipping_address)
             order.shipping_address = shipping_address
+            order.save()
 
         elif order.shipping_address == None:
             return redirect('shipping')

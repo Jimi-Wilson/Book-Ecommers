@@ -48,7 +48,6 @@
 
 }
 
-
 .title {
     position: absolute;
     width: auto;
@@ -65,9 +64,6 @@
     color: white;
 
 }
-
-
-
 
 .catch {
     position: absolute;
@@ -124,12 +120,33 @@
     top: 100px;
 }
 
-
-
-
-
 .footer {
     grid-area: footer;
     background-color: #082032;
     height: 15vh;
+}
+
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1755px) and (-webkit-min-device-pixel-ratio: 1) {
+
+    .stars-img {
+        position: absolute;
+        transform: scale(1.2);
+        width: 607.15px;
+        height: 276.19px;
+        right: 15em;
+        top: 3em;
+
+    }
+
+    .moon-img {
+        position: absolute;
+        transform: scale(1.5);
+        width: 132px;
+        height: 132px;
+        right: 4em;
+        top: 100px;
+    }
+
+
 }

@@ -2,7 +2,7 @@
   body {
     padding: 0;
     margin: 0;
-    background-color: #2C394B; 
+    background-color: #2C394B;
   }
 
   .navbar {
@@ -12,6 +12,8 @@
   }
 
   .navbar a {
+    font-family: 'Roboto Slab', serif;
+    font-style: normal;
     display: inline-block;
     color: white;
     text-align: center;
@@ -42,12 +44,7 @@
 
   }
 </style>
-
-
-<div class="navbar">
-  <a class="navlink" href="{% url 'home' %}">Home</a>
-  <a class="navlink" href="{% url 'books' %}">Books</a>
-  <a class="navlink" href="{% url 'myOrders' %}">My Orders</a>
-  <a class="navlink" class="account-link" href="{% url 'profile' %}">Account</a>
-  <a class="navlink" class="account-link" href="{% url 'cart' %}">Cart</a>
-</div>
+<div class="navbar"><a class="navlink" href="{% url 'home' %}">Home</a><a class="navlink"
+    href="{% url 'books' %}">Books</a><a class="navlink" href="{% url 'myOrders' %}">My Orders</a><a class="navlink"
+    class="account-link" href="{% url 'profile' %}">Account</a><a class="navlink" class="account-link"
+    href="{% url 'cart' %}">Cart</a></div>
