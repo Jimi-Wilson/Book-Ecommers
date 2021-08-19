@@ -122,7 +122,6 @@ class AddItemToCartView(View):
         else:
             order_items = OrderItem(product=book, order=order, quantity=+1)
             order_items.save()
-            print(order.get_cart_total)
             return render(request, self.template_name)
 
 
@@ -213,7 +212,6 @@ class CheckoutView(View):
                                      payment_complete=False).first()
 
         if shipping_address := request.user.shipping_address:
-            print(shipping_address)
             order.shipping_address = shipping_address
             order.save()
 

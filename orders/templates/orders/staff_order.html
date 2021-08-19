@@ -1,0 +1,20 @@
+{% extends 'sBase.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/library/orders/staff_order.css' %}">
+{% endblock %}
+{% block content %}
+<div class="content">
+
+<p>Transaction ID: {{order.transaction_id}}</p>
+{% for i in order_items %}
+<img src="{{i.product.coverImage.url}}" alt="">
+<p>Title: {{i.product.title}}</p>
+<p>Quantity: {{i.quantity}}</p>
+<p>Item Total: {{i.get_total}}</p>
+{% endfor %}
+
+<p>Order Total: {{order.get_cart_total}}</p>
+</div>
+
+{% endblock %}

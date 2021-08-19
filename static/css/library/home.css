@@ -1,9 +1,10 @@
 .container {
     display: grid;
-    grid-template-rows: auto 6.5fr .5fr;
+    grid-template-rows: auto 6.5fr auto .5fr;
     grid-template-areas:
         "navbar"
         "content"
+        "bottom-img"
         "footer";
 
 }
@@ -39,7 +40,7 @@
     position: absolute;
     width: 6.5em;
     height: 5px;
-    left: 320px;
+    left: 325px;
     top: 225px;
 
     background: #FF4C29;
@@ -68,7 +69,7 @@
 .catch {
     position: absolute;
     height: 56px;
-    left: 110px;
+    left: 100px;
     top: 220px;
 
     font-family: 'Roboto Slab', serif;
@@ -126,6 +127,58 @@
     height: 15vh;
 }
 
+
+.bottom-img {
+    grid-area: bottem-img;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+
+
+
+
+}
+
+
+.flower-img {
+    transform: scale(1);
+    width: 238px;
+    height: 291px;
+
+    position: absolute;
+    width: 238px;
+    height: 291px;
+    bottom: 5em;
+    margin-left: 75px;
+}
+
+
+.planet-img {
+    position: absolute;
+
+    transform: scale(1);
+    width: 238px;
+    height: 291px;
+    bottom: 5em;
+    right: 500px;
+
+
+}
+
+
+.gill-img {
+    position: absolute;
+
+    transform: scale(1);
+    width: 238px;
+    height: 291px;
+    left: 575px;
+
+    bottom: 5em;
+
+
+}
 
 @media screen and (min-device-width: 1200px) and (max-device-width: 1755px) and (-webkit-min-device-pixel-ratio: 1) {
 

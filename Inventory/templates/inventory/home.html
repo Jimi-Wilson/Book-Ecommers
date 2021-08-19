@@ -17,4 +17,28 @@
     <h1>{{totalCustomers}} Total Customers</h1>
   </div>
 </div>
+
+<div class="order-table">
+  <table>
+    <th>Transaction ID</th>
+    <th>Total Amount</th>
+    <th>Is Complete</th>
+    <th>View Items</th>
+    <th>Update Order Status</th>
+
+    {% for i in orders %}
+    <tr>
+      <td>{{i.transaction_id}}</td>
+      <td>£{{i.get_cart_total}}</td>
+      <td>{{i.complete}}</td>
+      <td><a href="{% url 'order' id=i.id%}">View Order</a></td>
+      <td><a href="{% url 'order_update' id=i.id %}">Update Order Status</a></td>
+    </tr>
+      
+    {% endfor %}
+  </table>
+
+
+</div>
+
 {% endblock %}
