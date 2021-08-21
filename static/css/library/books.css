@@ -11,6 +11,13 @@
     background-color: #2C394B;
 }
 
+body {
+    color: white;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+}
+
+
 .filter-form {
     grid-area: filter-form;
     display: flex;
@@ -27,6 +34,8 @@
 .navbar {
     grid-area: nav;
 }
+
+
 
 
 .search-form {
@@ -71,8 +80,26 @@
     grid-template-columns: repeat(6, 1fr);
     margin-top: 1em;
     margin-left: 1em;
+    height: 88vh;
 
 }
+
+.search-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    grid-column: 1 / 6;
+    height: 88vh;
+}
+
+.error-title {
+    color: white;
+    font-size: 5em;
+
+}
+
+.error-message {}
 
 .book {
     position: relative;

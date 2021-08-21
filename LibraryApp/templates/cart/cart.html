@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head %}{% endblock head %}
+{% block head %}
+<title>Your Cart</title>
+<link rel="stylesheet" href="{% static 'css/library/cart/cart.css' %}">
+{% endblock head %}
 {% block content %}
 
 {% if not order_items %}

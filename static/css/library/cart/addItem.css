@@ -12,6 +12,9 @@
 
 .content {
     grid-area: content;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .footer {
@@ -36,9 +39,10 @@ body {
     color: white;
     text-align: center;
     padding: 14px 1em;
-    margin-right: 5%;
+    margin-right: 2%;
     text-decoration: none;
     font-size: 1.2em;
+    font-weight: 100;
 }
 
 .wrapper a::after {
@@ -62,4 +66,9 @@ body {
     font-family: 'Roboto Slab', serif;
     font-style: normal;
     color: white;
+}
+
+h1 {
+    font-weight: 400;
+
 }

@@ -25,6 +25,10 @@ class BooksView(View):
             **kwargs):  # Gets all books and passes them to context
         context = {}
         books = Book.objects.all()
+        if tag_name := kwargs.get('tag'):
+            tag = Tag.objects.get(name=tag_name)
+            books = books.filter(tags=tag)
+
         context['books'] = books
         f_form = FilterForm()
         context['f_form'] = f_form
@@ -43,26 +47,25 @@ class BooksView(View):
         context['form'] = form
         f_form = FilterForm(request.POST)
         context['f_form'] = f_form
-
         try:
+
             search_field = form['search_field'].value().strip()
 
-            if self.books.filter(title__icontains=search_field).count() > 0:
+            if books.filter(title__icontains=search_field).count() != 0:
                 filters['title__icontains'] = search_field
                 count = +1
 
-            if self.books.filter(author__icontains=search_field).count() > 0:
+            elif books.filter(author__icontains=search_field).count() != 0:
                 filters['author__icontains'] = search_field
                 count = +1
 
-            if count == 0:
+            elif count == 0:
                 context['search_error'] = True
                 context['search_field'] = search_field
                 return render(request, self.template_name, context)
 
             selected_books = books.filter(**filters)
             context['books'] = selected_books
-
         except AttributeError:
             if f_form := FilterForm(request.POST):
                 context['f_form'] = f_form

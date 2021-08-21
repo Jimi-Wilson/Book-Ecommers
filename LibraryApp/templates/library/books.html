@@ -19,14 +19,17 @@
     <button type="submit">Apply Filters</button>
 </form>
 
-<div class="s"></div>
 
-{% if search_error %}
-<h1>No Results Found</h1>
-<p>There where no results matching your search : {{search_field}}</p>
-{% endif %}
+
 
 <div class="books-content">
+{% if books == none %}
+<div class="search-error">
+    <h1 class="error-title">No Results Found</h1>
+    <p class="error-message">There where no results matching your search : {{search_field}}</p>
+</div>
+
+{% endif %}
     {% for i in books %}
     <div class="book">
         <div class="image-container">

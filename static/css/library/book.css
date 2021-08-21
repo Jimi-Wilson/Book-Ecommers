@@ -7,14 +7,149 @@
         "footer";
 }
 
+body {
+    color: white;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+}
+
+
 .navbar {
     grid-area: nav;
 }
 
 .content {
+    position: relative;
     grid-area: content;
+    margin-left: 10%;
 }
 
 .footer {
     grid-area: footer;
+}
+
+.cover-img {
+    position: absolute;
+    width: 349px;
+    height: 589px;
+    left: 230px;
+    top: 172px;
+
+}
+
+.book-title {
+    position: absolute;
+    height: 51px;
+    left: 635px;
+    top: 169px;
+    font-size: 36px;
+    font-weight: 100;
+}
+
+.book-author {
+    position: absolute;
+    height: 27px;
+    left: 635px;
+    top: 230px;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.book-description {
+    position: absolute;
+    width: 549px;
+    height: 294px;
+    left: 635px;
+    top: 324px;
+    font-weight: 100;
+
+
+}
+
+.price {
+    position: absolute;
+    width: 66px;
+    height: 25px;
+    left: 1118px;
+    top: 232px;
+    font-size: 20px;
+    font-weight: 100;
+
+}
+
+.add-btn {
+    position: absolute;
+    left: 796px;
+    top: 654px;
+    color: white;
+    text-decoration: none;
+    background-color: #082032;
+    font-weight: 100;
+    font-family: 'Roboto Slab', serif;
+    padding: 1em;
+    border-radius: 2em;
+
+}
+
+.add-btn:active {
+    color: white;
+}
+
+
+.add-btn::after {
+    content: '';
+    width: 0%;
+    height: .2125em;
+    display: block;
+    background-color: #FF4C29;
+    border-radius: 5.875em;
+
+}
+
+.add-btn:hover::after {
+    width: 100%;
+    transition: all .5s;
+}
+
+.tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 25px;
+    left: 635px;
+    top: 295px;
+}
+
+.tag-btn {
+    width: max-content;
+    height: 28px;
+    color: white;
+    text-decoration: none;
+    background-color: #C4C4C4;
+    font-weight: 100;
+    font-family: 'Roboto Slab', serif;
+    border-radius: .5em;
+    padding: .1em;
+    margin-right: 1em;
+}
+
+.tag-btn:active {
+    color: white;
+}
+
+
+.tag-btn::after {
+    content: '';
+    width: 0%;
+    height: .2125em;
+    display: block;
+    background-color: #FF4C29;
+    border-radius: 5.875em;
+
+}
+
+.tag-btn:hover::after {
+    width: 100%;
+    transition: all .5s;
 }
