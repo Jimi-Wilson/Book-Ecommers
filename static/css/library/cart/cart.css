@@ -114,8 +114,50 @@ body {
 
 }
 
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.detail-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    background-color: #344256;
+    width: 236px;
+    height: 15em;
+    margin-left: 2em;
+}
+
+.checkout-title {
+    position: absolute;
+    left: 55px;
+    top: 19px;
+    font-size: 18px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+
+}
+
+.total-price {
+    position: absolute;
+    left: 63px;
+    top: 64px;
+    font-size: 18px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+}
+
+
+
 .checkout-btn {
     position: absolute;
+    width: 130px;
+    text-align: center;
     color: white;
     text-decoration: none;
     background-color: #082032;
@@ -123,4 +165,6 @@ body {
     border-radius: 1em;
     font-family: 'Roboto Slab', serif;
     font-weight: 100;
+    bottom: 15px;
+    left: 53px;
 }

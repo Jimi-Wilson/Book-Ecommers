@@ -11,30 +11,33 @@
 {% endif %}
 
 
+<div class="content">
+    <div class="products">
+        {% for i in order_items %}
+        <div class="product-card">
+            <div class="card-content">
+                <h1 class="book-title">{{i.product.title}}</h1>
+                <h2 class="book-author">By {{i.product.author}}</h1>
+                    <p class="book-description">{{i.product.description}}</p>
+                    <p class="quantity">Quantity: {{i.quantity}}</p>
+                    <a class="update-btn btn" href="{% url 'cartQuantityUpdate' id=i.id%}">Update Quantity</a>
+                    <p class="book-total">Total: £{{i.get_total}}</p>
+                    <a class="delete-btn btn" href="{% url 'deleteItem' id=i.id%}"
+                        onclick="return confirm('Are you sure you want to delete this?')">Remove From Cart</a>
+            </div>
+            <a class="book-img-link" href="{% url 'book' id=i.product.id %}"><img class="book-img"
+                    src="{{i.product.coverImage.url}}" alt=""></a>
 
-<div class="products">
-    {% for i in order_items %}
-
-    <div class="product-card">
-        <div class="card-content">
-            <h1 class="book-title">{{i.product.title}}</h1>
-            <h2 class="book-author">By {{i.product.author}}</h1>
-            <p class="book-description">{{i.product.description}}</p>
-            <p class="quantity">Quantity: {{i.quantity}}</p>
-            <a class="update-btn btn" href="{% url 'cartQuantityUpdate' id=i.id%}">Update Quantity</a>
-            <p class="book-total">Total: £{{i.get_total}}</p>
-            <a class="delete-btn btn" href="{% url 'deleteItem' id=i.id%}"
-                onclick="return confirm('Are you sure you want to delete this?')">Remove From Cart</a>
         </div>
-        <a class="book-img-link" href="{% url 'book' id=i.product.id %}"><img class="book-img" src="{{i.product.coverImage.url}}" alt=""></a>
+
+        {% endfor %}
+    </div>
+    <div class="detail-box">
+        <p class="checkout-title">Order Summary</p>
+        <p class="total-price">Total: £{{order.get_cart_total}}</p>
+        <a class="checkout-btn" href="{% url 'checkout' %}">Checkout</a>
+
 
     </div>
-
-    {% endfor %}
 </div>
-<div class="detail-box">
-    <a class="checkout-btn" href="{% url 'checkout' %}">Checkout</a>
-
-</div>
-
 {% endblock content %}

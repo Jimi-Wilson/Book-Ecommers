@@ -136,7 +136,6 @@ class CartView(View):
         context = {}
         order = Order.objects.filter(user=request.user, payment_complete=False)
         order = order.filter(user=request.user).first()
-        print(order)
         context['order'] = order
         order_items = OrderItem.objects.filter(order=order)
         context['order_items'] = order_items
