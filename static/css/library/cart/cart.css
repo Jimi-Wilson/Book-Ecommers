@@ -1,3 +1,126 @@
 body {
     color: white;
 }
+
+.products {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.product-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "img content";
+    background-color: #344256;
+    width: 1000px;
+    height: 204px;
+    margin-top: 1em;
+
+}
+
+.card-content {
+    position: relative;
+    height: inherit;
+}
+
+
+.book-title {
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+    margin-top: 17px;
+    margin-bottom: 0px;
+
+}
+
+.book-author {
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.book-total {
+    position: absolute;
+    top: 24px;
+    right: 43px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+}
+
+.book-img-link {
+    grid-area: img;
+    height: 170px;
+
+}
+
+.book-img {
+    padding: 1em;
+    height: 170px;
+}
+
+.book-description {
+    width: 774.83px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+    margin-top: 7px;
+
+}
+
+.quantity {
+    position: absolute;
+    bottom: 13px;
+    left: 21px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+}
+
+.update-btn {
+    color: white;
+    text-decoration: none;
+    background-color: #082032;
+    padding: .5em;
+    border-radius: 1em;
+    font-size: 18px;
+
+    position: absolute;
+    left: 118px;
+    bottom: 17px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+
+}
+
+
+.delete-btn {
+    position: absolute;
+    color: white;
+    text-decoration: none;
+    background-color: #082032;
+    padding: .5em;
+    border-radius: 1em;
+    right: 5px;
+    bottom: 17px;
+    font-size: 18px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+
+
+}
+
+.checkout-btn {
+    position: absolute;
+    color: white;
+    text-decoration: none;
+    background-color: #082032;
+    padding: .5em;
+    border-radius: 1em;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
+}

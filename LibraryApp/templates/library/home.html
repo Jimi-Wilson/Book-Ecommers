@@ -8,10 +8,13 @@
 {% block content %}
 <div class="content">
     <div class="circle"></div>
-    <h1 class="title">Polaris Books</h1>
-    <p class="catch">Explore Page By Page</p>
-    <a class="books-btn" href="{% url 'books' %}">Explore Now</a>
-    <div class="underline"></div>
+    <div class="circle-content">
+        <h1 class="title">Polaris Books</h1>
+        <p class="catch">Explore Page By Page</p>
+        <a class="books-btn" href="{% url 'books' %}">Explore Now</a>
+        <div class="underline"></div>
+    </div>
+
     <div class="stars-img"><img src="{% static 'img/stars.svg' %}" alt=""></div>
     <div class="moon-img"><img src="{% static 'img/moon.svg' %}" alt=""></div>
     <div class="bottom-img">
