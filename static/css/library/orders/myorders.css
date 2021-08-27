@@ -14,10 +14,10 @@
 
 
 .content {
+    display: flex;
     grid-area: content;
     margin: 5em;
     margin-left: 10em;
-    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -25,12 +25,23 @@
 
 .total-price {
     margin-left: 5em;
+    color: white;
 }
+
+.order {
+    margin-top: 2em;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
 
 .view-order-btn {
     padding: .5em;
     background-color: #082032;
-    color: #334756;
+    color: white;
     text-decoration: none;
     border-radius: 1em;
 }

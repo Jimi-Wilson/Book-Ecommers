@@ -1,6 +1,6 @@
 .container {
     display: grid;
-    grid-template-rows: auto max-content 1fr auto;
+    grid-template-rows: auto mi-content 1fr auto;
     grid-template-columns: auto 1fr;
     grid-template-areas:
         "nav nav"
@@ -76,11 +76,10 @@ body {
 .books-content {
     grid-area: books;
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr;
     grid-template-columns: repeat(6, 1fr);
     margin-top: 1em;
     margin-left: 1em;
-    height: 88vh;
 
 }
 
@@ -99,7 +98,6 @@ body {
 
 }
 
-.error-message {}
 
 .book {
     position: relative;

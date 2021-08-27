@@ -50,7 +50,7 @@ class OrdersView(View):
 
 
 @method_decorator(decorators, name='dispatch')
-class DetailOrderView(View):
+class StaffDetailOrderView(View):
     template_name = 'orders/staff_order.html'
 
     def get(self, request, id, *args, **kwargs):

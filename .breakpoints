@@ -1,0 +1,26 @@
+{
+  "files": {
+    ".replit": [
+      {
+        "id": "1eee8d92-33b4-4a10-a346-cc8f394a24e2",
+        "line": 2,
+        "version": 3,
+        "index": 21
+      }
+    ],
+    "static/css/library/book.css": [
+      {
+        "id": "40e5a9de-7a87-49e5-801e-cd0704b3a28d",
+        "line": 170,
+        "version": 244,
+        "index": 2472
+      },
+      {
+        "id": "2dd2d15b-12be-4b12-8a74-8c8ca58b7389",
+        "line": 208,
+        "version": 244,
+        "index": 2809
+      }
+    ]
+  }
+}
