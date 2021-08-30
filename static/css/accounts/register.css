@@ -1,3 +1,94 @@
 .container {
   display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 'nav'
+    'content'
+    'footer';
+}
+
+.navbar {
+  grid-area: nav;
+}
+
+.content {
+  grid-area: content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form {
+  color: white;
+  margin-top: 5em;
+  background-color: #344256;
+  padding: 5em;
+}
+
+h1 {
+  font-size: 2em;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 100;
+  text-align: center;
+
+}
+
+label {
+  text-align: left;
+  display: inline-block;
+  width: 15em;
+  font-size: 1.5em;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 100;
+}
+
+input {
+  padding: .5em;
+}
+
+.form-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.submit-btn {
+  display: block;
+  color: white;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1em;
+  font-weight: 100;
+  text-decoration: none;
+  background-color: #082032;
+  padding: .5em;
+  border-radius: 1em;
+  border-color: #082032;
+  border-style: solid;
+}
+
+
+.submit-btn:active {
+  color: white;
+}
+
+
+.submit-btn::after {
+  content: '';
+  width: 0%;
+  height: .2125em;
+  display: block;
+  background-color: #FF4C29;
+  border-radius: 5.875em;
+
+}
+
+.submit-btn:hover::after {
+  width: 100%;
+  transition: all .5s;
+}
+
+.footer {
+  grid-area: footer;
 }

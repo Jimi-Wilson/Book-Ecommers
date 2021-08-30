@@ -36,7 +36,7 @@
             <a href="{% url 'book' id=i.id %}"><img src="{{i.coverImage.url}}" alt="Book Cover of {{i.title}}"></a>
         </div>
         <div class="title-container"><a class="text-link" href="{% url 'book' id=i.id %}">{{i.title}}</a></div>
-        <div class="author-container"><a class="text-link" href="">{{i.author}}</a></div>
+        <div class="author-container"><a class="text-link" href="{% url 'book-author' author=i.author %}">{{i.author}}</a></div>
         {% if i.discounted_price %}
         <div class="price-contatiner"><s>£{{i.price}}</s>
             <p class="price">£{{i.discounted_price}}</p>

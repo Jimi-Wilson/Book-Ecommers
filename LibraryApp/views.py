@@ -1,3 +1,4 @@
+from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.urls.base import reverse_lazy
 from django.views.generic.edit import UpdateView
@@ -22,12 +23,15 @@ class BooksView(View):
     template_name = 'library/books.html'
 
     def get(self, request, *args,
-            **kwargs):  # Gets all books and passes them to context
+            **kwargs):  # Gets all books then searches through by fields and passes them to context
         context = {}
         books = Book.objects.all()
         if tag_name := kwargs.get('tag'):
             tag = Tag.objects.get(name=tag_name)
             books = books.filter(tags=tag)
+
+        if author_name := kwargs.get('author'):
+            books = books.filter(author=author_name)
 
         context['books'] = books
         f_form = FilterForm()

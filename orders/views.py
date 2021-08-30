@@ -4,7 +4,6 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import UpdateView
 from django.urls import reverse_lazy
-
 from Inventory.models import Order, OrderItem
 from Inventory.decorators import is_staff
 
@@ -44,7 +43,7 @@ class OrdersView(View):
 
     def get(self, request, *args, **kwargs):
         context = {}
-        orders = Order.objects.all()
+        orders = Order.objects.all().filter(payment_complete=True)
         context['orders'] = orders
         return render(request, self.template_name, context)
 

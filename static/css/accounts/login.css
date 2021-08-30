@@ -17,8 +17,6 @@
 }
 
 .form {
-
-
     color: white;
     margin-top: 5em;
     background-color: #344256;
@@ -28,7 +26,7 @@
 label {
     text-align: left;
     display: inline-block;
-    width: 15em;
+    width: 8em;
     font-size: 1.5em;
     font-family: 'Roboto Slab', serif;
     font-weight: 100;
@@ -45,46 +43,27 @@ input {
     flex-direction: column;
 }
 
-.reset-btn {
-    color: white;
-    font-size: .8em;
+h1 {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+p {
     font-family: 'Roboto Slab', serif;
     font-weight: 100;
-    text-decoration: none;
-    background-color: #082032;
-    padding: .5em;
-    border-radius: 1em;
-    margin-bottom: 1em;
 }
 
-
-.reset-btn:active {
+a {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 100;
     color: white;
 }
-
-
-.reset-btn::after {
-    content: '';
-    width: 0%;
-    height: .2125em;
-    display: block;
-    background-color: #FF4C29;
-    border-radius: 5.875em;
-
-}
-
-.reset-btn:hover::after {
-    width: 100%;
-    transition: all .5s;
-}
-
-
 
 .submit-btn {
     display: block;
     color: white;
     font-family: 'Roboto Slab', serif;
-    font-size: 1.3em;
+    font-size: 1em;
     font-weight: 100;
     text-decoration: none;
     background-color: #082032;
@@ -113,10 +92,4 @@ input {
 .submit-btn:hover::after {
     width: 100%;
     transition: all .5s;
-}
-
-
-
-.footer {
-    grid-area: footer;
 }

@@ -13,6 +13,8 @@ class RegistrationForm(UserCreationForm):
     lastName = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'Type Your Last Name'}),
         label="Last Name:")
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Type Your Password'}),label='Password')
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Retype Your Password'}),label='Password Again')
 
     class Meta:
         model = User

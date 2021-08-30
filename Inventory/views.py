@@ -26,8 +26,10 @@ class HomeView(View):
                                                     staff=False).count()
         orders = Order.objects.all().filter(payment_complete=True,
                                             complete=False)
+        orders_complete = Order.objects.all().filter(complete=True).count()
         context['orders'] = orders
         context['totalBooks'] = total_books
+        context['orders_complete'] = orders_complete
         context['totalCustomers'] = total_customers
         return render(request, 'inventory/home.html', context)
 

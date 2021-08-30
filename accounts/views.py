@@ -53,7 +53,10 @@ class ProfileView(View):
         user_form = UserUpdateForm(request.POST, instance=request.user)
 
         if shipping_form.is_valid() and user_form.is_valid():
-            shipping_form.save()
+            shipping_address = shipping_form.save()
+            request.user.shipping_address = shipping_address
+            request.user.save()
+
             user_form.save()
             return redirect('profile')
         else:

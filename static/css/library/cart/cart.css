@@ -67,10 +67,12 @@ body {
 
 .book-description {
     width: 774.83px;
+    height: 7ch;
     font-family: 'Roboto Slab', serif;
     font-weight: 100;
     margin-top: 7px;
-
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .quantity {
@@ -97,6 +99,25 @@ body {
 
 }
 
+.update-btn:active {
+    color: white;
+}
+
+
+.update-btn::after {
+    content: '';
+    width: 0%;
+    height: .2125em;
+    display: block;
+    background-color: #FF4C29;
+    border-radius: 5.875em;
+
+}
+
+.update-btn:hover::after {
+    width: 100%;
+    transition: all .5s;
+}
 
 .delete-btn {
     position: absolute;
@@ -113,6 +134,27 @@ body {
 
 
 }
+
+.delete-btn:active {
+    color: white;
+}
+
+
+.delete-btn::after {
+    content: '';
+    width: 0%;
+    height: .2125em;
+    display: block;
+    background-color: #FF4C29;
+    border-radius: 5.875em;
+
+}
+
+.delete-btn:hover::after {
+    width: 100%;
+    transition: all .5s;
+}
+
 
 .content {
     display: flex;
@@ -167,4 +209,25 @@ body {
     font-weight: 100;
     bottom: 15px;
     left: 53px;
+}
+
+
+.checkout-btn:active {
+    color: white;
+}
+
+
+.checkout-btn::after {
+    content: '';
+    width: 0%;
+    height: .2125em;
+    display: block;
+    background-color: #FF4C29;
+    border-radius: 5.875em;
+
+}
+
+.checkout-btn:hover::after {
+    width: 100%;
+    transition: all .5s;
 }

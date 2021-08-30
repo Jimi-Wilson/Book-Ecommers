@@ -5,23 +5,25 @@
 {% endblock %}
 
 {% block content %}
+<div class="content">
+<form method='POST' class="form">
 <h1>Register</h1>
-<form method='POST'>
+
   {% csrf_token %}
   {% for field in registration_form %}
   <p>
     {{field.label_tag}}
     {{field}}
-    {% if field.help_text %}
-    <small style="color:gray">{{field.help_text}}</small>
-    {% endif %}
     {% for error in field.errors %}
   <p style="color: red">{{error}}</p>
   {% endfor %}
   </p>
   {% endfor %}
 
+<div class="form-bottom">
+  <button class="submit-btn" type="submit">Register</button>
+</div>
 
-  <button type="submit">Register</button>
 </form>
+</div>
 {% endblock %}

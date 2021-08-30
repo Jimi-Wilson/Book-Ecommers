@@ -1,0 +1,19 @@
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 'nav'
+        'content'
+        'footer';
+}
+
+.navbar {
+    grid-area: nav;
+}
+
+.content {
+    grid-area: content;
+}
+
+.footer {
+    grid-area: footer;
+}

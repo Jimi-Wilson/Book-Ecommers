@@ -18,7 +18,8 @@ class UserManager(BaseUserManager):
                     lastName=None,
                     is_staff=False,
                     is_admin=False,
-                    shipping_address=None):
+                    shipping_address=None,
+                    is_active=None):
         if not email:
             raise ValueError("Users must have an email address")
         if not password:
@@ -30,21 +31,23 @@ class UserManager(BaseUserManager):
         user_obj.admin = is_admin
         user_obj.firstName = firstName
         user_obj.lastName = firstName
+        user_obj.is_active = is_active
         user_obj.shipping_address = shipping_address
 
         user_obj.save(using=self._db)
         return user_obj
 
-    def create_staffuser(self, email, password=None):
-        user = self.create_user(email, password=password, is_staff=True)
+    def create_staffuser(self, email, password=None, is_active=None):
+        user = self.create_user(email, password=password, is_staff=True, is_active=True)
         return user
 
-    def create_superuser(self, email, password=None):
+    def create_superuser(self, email, password=None, is_active=None):
         user = self.create_user(
             email,
             password=password,
             is_staff=True,
             is_admin=True,
+            is_active= True
         )
         return user
 
@@ -58,6 +61,7 @@ class User(AbstractBaseUser):
     shipping_address = models.ForeignKey(ShippingAddressModel,
                                          on_delete=SET_NULL,
                                          null=True)
+    is_active = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'  # username
     # USERNAME_FIELD and password are required by default

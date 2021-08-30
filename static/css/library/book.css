@@ -155,56 +155,55 @@ body {
 }
 
 
-@media screen and (min-device-width: 1200px) and (max-device-width: 1755px){
-.cover-img {
-    position: absolute;
-    left: 99px;
-    top: 57px;
+@media screen and (min-device-width: 1200px) and (max-device-width: 1755px) {
+    .cover-img {
+        position: absolute;
+        left: 99px;
+        top: 57px;
+
+    }
+
+    .book-title {
+        position: absolute;
+        left: 504px;
+        top: 54px;
+
+    }
+
+    .book-author {
+        position: absolute;
+        left: 504px;
+        top: 115px;
+
+    }
+
+    .book-description {
+        position: absolute;
+        left: 504px;
+        top: 209px;
+
+
+    }
+
+    .price {
+        position: absolute;
+        left: 987px;
+        top: 117px;
+    }
+
+    .add-btn {
+        position: absolute;
+        left: 665px;
+        top: 539px;
+
+
+    }
+
+    .tags {
+        position: absolute;
+        left: 502px;
+        top: 180px;
+
+    }
 
 }
-
-.book-title {
-    position: absolute;
-left: 504px;
-top: 54px;
-
-}
-
-.book-author {
-    position: absolute;
-left: 504px;
-top: 115px;
-
-}
-
-.book-description {
-    position: absolute;
- left: 504px;
-top: 209px;
-
-
-}
-
-.price {
-    position: absolute;
-left: 987px;
-top: 117px;
-}
-
-.add-btn {
-    position: absolute;
-left: 665px;
-top: 539px;
-    
-
-}
-
-.tags {
-    position: absolute;
-left: 502px;
-top: 180px;
-
-}
-
-}
-

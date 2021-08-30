@@ -1,5 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'Sbase.html' %}
+{% load static %}
 {% block head %}
+<title>Update Order Status</title>
+<link rel="stylesheet" href="{% static 'css/library/orders/update.css' %}">
 {% endblock %}
 {% block content %}
 <form method="post">

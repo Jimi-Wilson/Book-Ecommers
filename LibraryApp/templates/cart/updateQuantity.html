@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block head %}
 <title>Update Quantity</title>
+<link rel="stylesheet" href="{% static 'css/library/cart/quantity.css' %}">
 {% endblock head %}
 {% block content %}
-<form method="post">
+<div class="content">
+<form method="post" class="form">
     {% csrf_token %}
     {{form}}
-    <button type="submit">Update</button>
+    <div class="form-bottom">
+    <button class="submit-btn" type="submit">Update</button>
+</div>
 </form>
 
+</div>
 {% endblock content %}

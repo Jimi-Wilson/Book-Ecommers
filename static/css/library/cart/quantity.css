@@ -17,8 +17,6 @@
 }
 
 .form {
-
-
     color: white;
     margin-top: 5em;
     background-color: #344256;
@@ -26,6 +24,7 @@
 }
 
 label {
+    color: white;
     text-align: left;
     display: inline-block;
     width: 15em;
@@ -44,40 +43,6 @@ input {
     justify-content: center;
     flex-direction: column;
 }
-
-.reset-btn {
-    color: white;
-    font-size: .8em;
-    font-family: 'Roboto Slab', serif;
-    font-weight: 100;
-    text-decoration: none;
-    background-color: #082032;
-    padding: .5em;
-    border-radius: 1em;
-    margin-bottom: 1em;
-}
-
-
-.reset-btn:active {
-    color: white;
-}
-
-
-.reset-btn::after {
-    content: '';
-    width: 0%;
-    height: .2125em;
-    display: block;
-    background-color: #FF4C29;
-    border-radius: 5.875em;
-
-}
-
-.reset-btn:hover::after {
-    width: 100%;
-    transition: all .5s;
-}
-
 
 
 .submit-btn {
@@ -114,7 +79,6 @@ input {
     width: 100%;
     transition: all .5s;
 }
-
 
 
 .footer {
